@@ -1,0 +1,457 @@
+
+\documentclass[12pt]{report}
+
+\usepackage{setspace}
+\onehalfspacing %doublespace %
+
+\usepackage{amssymb,amsmath,amsthm}
+
+\setlength{\intextsep}{1ex}
+
+%\usepackage[dvips]{graphicx}
+\usepackage{graphicx}
+\include{epstopdf}
+\renewcommand{\qedsymbol}{\rule{0.4em}{0.4em}}
+\usepackage{tabularx}
+
+\usepackage[a4paper,bindingoffset=25mm,%
+            left=0mm,right=15mm,top=15mm,bottom=15mm,%
+            footskip=5mm]{geometry}
+
+\usepackage{lipsum}  
+ 
+
+\usepackage{float}
+\setlength{\intextsep}{1ex}
+\usepackage[shortlabels]{enumitem}
+\usepackage{multirow}
+\usepackage[font={small}]{caption}
+\usepackage{nameref}
+
+\usepackage[justification=centering]{caption}
+\usepackage{caption,subcaption}
+\usepackage[toc,page]{appendix}
+
+
+
+\setlength{\parskip}{10pt}
+\setlength{\parindent}{0pt}
+
+\renewcommand{\bibname}{References}
+
+
+\setlength\parindent{0pt}
+\setlength{\unitlength}{1cm} 
+
+
+\begin{document}
+
+\begin{titlepage}
+\centering
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.4\textwidth]{MAK_Logo2_png.png}%
+\end{figure}
+
+
+\textsc{}
+
+\vspace{\stretch{0.1}}
+
+{\huge \textsc{Design of a machine learning based system for pharmaceutical purchases}  \\}
+\rule{3in}{0.4pt}
+
+\vspace{\stretch{0.4}}
+
+{\Large\textbf{Abraham Kakooza Jerry}	 \\}
+Reg No.: 16/U/327\\ \vspace{2cm}
+{\large \textbf{Department of Electrical and Computer Engineering} \\
+School of Engineering \\
+College of Engineering, Design, Art and Technology}
+
+
+
+\vspace{\stretch{0.3}}
+
+{
+Supervisor: \textbf{Dr Andrew Katumba}    \\
+Co-supervisor: \textbf{Prof. Peter Lating} }
+
+\vspace*{\stretch{0.2}}
+
+% Add date in desired format
+April 27, 2020
+
+
+\vspace*{\stretch{0.2}}
+% Add the statement of what the report represents
+{
+A Report submitted in partial fulfillment of the requirements for the \\ \textbf{ Degree of Bachelor of Science in Telecommunications Engineering} \\ at Makerere University. }
+
+
+\end{titlepage}
+
+
+
+%\maketitle
+				
+%\beforeabstract %\input{abstract} 
+
+
+
+\section*{Declaration}
+
+Add your declaration here.
+
+
+
+\newpage
+
+
+\section*{Dedication}
+
+\vspace{2cm}
+\begin{center}
+Add your dedication here.
+\end{center}
+
+
+
+\newpage
+
+\section*{Acknowledgments}
+
+Add acknowledgments. 
+
+
+\lipsum[2-4]
+
+
+
+\newpage
+
+
+
+\section*{Abstract}
+
+
+Data traffic demand has been increasing exponentially and this trend will continue over the foreseeable future. This has forced operators to upgrade and densify their mobile networks to enhance their capacity. Future networks will be characterized by a dense deployment of different kinds of base stations (BSs) in a hierarchical cellular structure. However network densification requires extensive capital and operational investment which limits operator revenues and raises ecological concerns over greenhouse gas emissions. Although networks are planned to support peak traffic, traffic demand is actually highly variable in both space and time which makes it necessary to adapt network energy consumption to inevitable variations in traffic demand. 
+
+......
+
+\newpage
+
+\tableofcontents
+
+\newpage
+
+\listoffigures
+
+\newpage
+
+\listoftables
+
+\newpage
+
+
+
+\section*{List of Abbreviations}
+
+\begin{tabular}{p{3cm} l}
+	3G	& Third Generation mobile network\\
+	4G	& Fourth Generation mobile network\\	
+	5G	& Fifth Generation mobile network\\		
+	AC    & Alternating Current \\
+	ACI   & Adjacent Channel Interference \\
+  AP		& Access Point \\
+	etc.
+
+\end{tabular}
+
+
+\newpage
+
+\section*{Symbols and Notations}
+
+If you have any, add them here. Otherwise, leave this section out.
+
+\begin{tabular}{p{3cm} l}
+	$\alpha$						& Pathloss exponent \\
+	$\beta$							& Bias value with ABRP connectivity \\
+	$\mathcal{B}$				& System Bandwidth \\
+	$\mathcal{L}(\cdot)$ & Laplace transform \\
+  $\mathbb{E}[\cdot]$	& Expectation operator \\
+  $\mathbb{P}[\cdot]$	& Probability operator \\
+	$\sigma^2$					& Additive noise power \\	
+etc
+\end{tabular}
+
+
+This is how we reference. For example, Cisco \cite{cisco} and Numerical Analysis \cite{bisect}. 
+
+
+
+
+
+\chapter{Introduction}
+
+\section{Background}
+
+
+Add background
+
+
+
+\lipsum[2-6]
+
+
+\section{Aims and Objectives}
+
+The main aim of the research project was to ....
+
+The specific objectives of the research were:
+
+\begin{itemize}[topsep=0pt]
+
+\item To 
+
+\item To 
+
+\item To 
+
+\end{itemize}
+
+
+
+
+
+
+
+
+
+\section{List of Publications}
+
+% If you have no papers, comment this out....
+
+The following papers have already been published or submitted.
+\begin{enumerate}[P.1,topsep=0pt]
+
+	\item Publication 1
+
+	\item Publication 2
+
+\end{enumerate}
+
+
+
+
+
+\section{Contributions of the Project}
+
+The following major contributions have been accomplished during the course of this research:
+
+\begin{enumerate}[topsep=0pt]
+
+\item Developed ...
+
+\item Performed .....
+
+\item Proposed a ....
+
+\end{enumerate}
+
+
+
+
+
+
+\section{Organization of the Report}
+
+This report has ***** chapters. 
+
+% Describe what each chapter discusses.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\chapter{Heading of Chapter 2}
+% Usually Literature Review
+
+\section{Introduction}
+
+% Start with an introduction
+
+
+\section{....}
+
+% Add sections and (sub)subsections as appropriate
+
+
+\lipsum[2-4]
+
+
+
+
+
+
+\section{Summary}
+% End your chapter with a short summary.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\chapter{Add another Chapter}
+
+\section{Introduction}
+
+% Short Introduction
+
+\section{Mathematical Preliminaries}
+
+% Add sections and (sub)subsections as appropriate
+
+
+\lipsum[2-4]
+
+
+% Add other chapters and their (sub)(sub)sections as appropriate
+
+
+
+
+
+
+
+\chapter{Numerical Results}
+
+% Usually, start with a table of parameters similar to the one below, if this applies to your project.
+
+
+\begin{table}[H]
+\caption{Simulation Parameters} % title of Table
+\centering % used for centering table
+    \begin{tabular}{| l | l |}
+	 \hline\hline
+    Parameters & Values \\ \hline
+    Network size &  $A = 5\,\text{km}\times 5\,\text{km}$ \\ \hline
+    Total BS bandwidth &  $\mathcal{B}=20\,\text{MHz}$ \\ \hline
+		BS and user densities &  $\lambda_b = 1.6\times 10^{-5}\,\,\text{m}^2$, $\lambda_u = 2\lambda_b$  \\ \hline
+    Transmit power &  $P_t = 21\, \text{dBm}$ \\ \hline
+    Pathloss parameters & $L = -33\,\text{dB}$, $\alpha=4$ \\ \hline
+    Power parameters & $\mathcal{N}_b = 2$, $P_0=6.8\,\text{W}$, $\Delta=4$, $P_{sl}=4.3$ \\\hline	
+    Additive noise parameters & $F = 10$, $T_a = 300\,\text{K}$\\\hline		
+\end{tabular}
+%\label{tab:parameters-sleep-mode} 
+\end{table}
+
+
+
+\lipsum[2-4]
+
+
+
+% End with a conclusion chapter
+\chapter{Conclusions and Future Works}
+%\label{chap:conclusion}
+
+\section{Conclusions}
+
+%Conclude here
+
+
+\lipsum[2-4]
+
+
+
+\section{Ideas for Future Work}
+
+% Add any ideas for further work here
+
+
+% You can also add a section on challenges and recommendations if you wish
+
+
+
+
+
+
+
+
+
+
+
+
+%\bibliographystyle{alpha}
+
+\bibliographystyle{IEEEtran}
+
+
+\begin{thebibliography}{1}
+
+\bibitem{cisco}
+Cisco, "Cisco Visual Networking Index: Forecast and Trends, 2017–2022 White Paper \emph{Cisco Systems.Inc}, Document ID:1551296909190103, Updated February 27, 2019.
+
+\bibitem{bisect} R. L. Burden and J. D. Faires, Numerical Analysis: Bisection Method, 9th Ed., Brooks/Cole, Cengage Learning, 20 Channel Center Street, Boston, MA 02210, USA, 2011.
+
+\end{thebibliography}
+
+
+%% the bibliography style determines the format  in which both citations and references are printed,
+%% other possible values are plain and abbrv
+%%
+%% If you want more control of the format of your citations you might want to take a look at
+%% natbib.sty, which should be part of any standard LaTeX installation
+%%
+%% University regulations simply require that your citation style be consistent, so see what style
+%% your supervisor recommends.
+
+% Appendices start here
+
+
+
+\appendix
+
+\chapter{Appendix}
+
+\lipsum[2-3]
+
+\end{document}
