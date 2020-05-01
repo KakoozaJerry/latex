@@ -76,7 +76,7 @@ College of Engineering, Design, Art and Technology}
 
 {
 Supervisor: \textbf{Dr Andrew Katumba}    \\
-Co-supervisor: \textbf{Prof. Peter Lating} }
+Co-supervisor: \textbf{Prof. Eng. Dr. Peter Lating, iLabs Principal Investigator} }
 
 \vspace*{\stretch{0.2}}
 
@@ -136,8 +136,7 @@ Add acknowledgments.
 \section*{Abstract}
 
 
-Data traffic demand has been increasing exponentially and this trend will continue over the foreseeable future. This has forced operators to upgrade and densify their mobile networks to enhance their capacity. Future networks will be characterized by a dense deployment of different kinds of base stations (BSs) in a hierarchical cellular structure. However network densification requires extensive capital and operational investment which limits operator revenues and raises ecological concerns over greenhouse gas emissions. Although networks are planned to support peak traffic, traffic demand is actually highly variable in both space and time which makes it necessary to adapt network energy consumption to inevitable variations in traffic demand. 
-
+Using a univariate time series analysis, we were able to validate different methods and approaches related to time series data preparation, analysis and forecast with an aim to facilitate recommending sales and marketing strategies based on trend/seasonality effects and forecasting sales of top five selling pharmaceutical products with diverse characteristics, such as stationarity, seasonality, amount of residuals and sales data variance. These drugs are Amoxicillin caps, Ampicloxa, Ceftriaxone Inj, Ciprofloxacin, Cotrimoxazole. 
 ......
 
 \newpage
@@ -159,66 +158,37 @@ Data traffic demand has been increasing exponentially and this trend will contin
 \section*{List of Abbreviations}
 
 \begin{tabular}{p{3cm} l}
-	3G	& Third Generation mobile network\\
-	4G	& Fourth Generation mobile network\\	
-	5G	& Fifth Generation mobile network\\		
-	AC    & Alternating Current \\
-	ACI   & Adjacent Channel Interference \\
-  AP		& Access Point \\
-	etc.
+	ARIMA	& Auto Regression Integrated Moving Average\\
+	LSTM	& Long Short Term Memory\\	
+	
 
 \end{tabular}
 
 
 \newpage
 
-\section*{Symbols and Notations}
-
-If you have any, add them here. Otherwise, leave this section out.
-
-\begin{tabular}{p{3cm} l}
-	$\alpha$						& Pathloss exponent \\
-	$\beta$							& Bias value with ABRP connectivity \\
-	$\mathcal{B}$				& System Bandwidth \\
-	$\mathcal{L}(\cdot)$ & Laplace transform \\
-  $\mathbb{E}[\cdot]$	& Expectation operator \\
-  $\mathbb{P}[\cdot]$	& Probability operator \\
-	$\sigma^2$					& Additive noise power \\	
-etc
-\end{tabular}
-
-
-This is how we reference. For example, Cisco \cite{cisco} and Numerical Analysis \cite{bisect}. 
-
-
-
-
-
 \chapter{Introduction}
 
 \section{Background}
 
 
-People act on the basis of forecasting models whether they are on paper or in their heads. You are better off quantifying these estimations so you can discuss them rationally as opposed to making them based on intuition. For pharmaceutical distribution companies, it is essential to get good estimates of drugs, due to the short shelf life of many medicines and the need to control stock levels, to avoid excessive inventory costs while guaranteeing customer demand satisfaction, and thus decreasing the possibility of loss of customers due to stock outages.\\
+People act on the basis of forecasting models whether they are on paper or in their heads. You are better off quantifying these estimations so you can discuss them rationally as opposed to making them based on intuition. For pharmaceutical distribution companies, it is essential to get good estimates of drugs due to the short shelf life of many medicines, the need to control stock levels and to avoid excessive inventory costs while guaranteeing customer demand satisfaction.This decreases the possibility of loss of customers due to stock outages.\\
 
-Before digital technology dominated the world, the forecasting process was done manually by experienced individuals in the domain. This intuition required a lot of experience and was prone to error. Due to this multifaceted problem, they started realizing the need for automating the pharmacy sales forecasting process. Thus, research and experiments were carried out with statistical, machine learning, deep learning and ensemble techniques to achieve more accurate sales forecasts. [1]\\
-Effectiveness of two forecasting methods, namely ARIMA and Long-Short Term Memory (LSTM) neural networks is investigated.\\
-Daily sales data for a period of two years is analyzed.First, we arranged our data in a proper format to easily perform predictions with the same data file using Microsoft excel. The data file was imported into the google colab jupyter notebook by first cloning it from GitHub, then using pandas passed into a variable for further processing.\\
-Using box-plots, we were able to see that Cotrimoxazole has more outliers than the rest of the drugs which makes it much harder to predict the future sales value.
+Before digital technology dominated the world, the forecasting process was done manually by experienced individuals in the domain. This intuition required a lot of experience and was prone to error. Such a multifaceted problem started to realize the need for automating the pharmacy sales forecasting process. Research has been carried out with statistical, machine learning, deep learning and ensemble techniques to achieve more accurate sales forecasts. \cite{Perera2019}\\
 
 \section{Aims and Objectives}
 
-The main aim of the research project was to ....
+The main aim of the research project was to precisely predict sales of drugs and medical supplies.
 
-The specific objectives of the research were:
+The specific objectives  were:
 
 \begin{itemize}[topsep=0pt]
 
-\item To 
+\item To collect datasets of previous sales and purchases from Soteria Pharmacy.
 
-\item To 
+\item To train and validate datasets with ARIMA and LSTM models.
 
-\item To 
+\item To optimize the best model algorithm for accurate performance.
 
 \end{itemize}
 
@@ -230,19 +200,6 @@ The specific objectives of the research were:
 
 
 
-\section{List of Publications}
-
-% If you have no papers, comment this out....
-
-The following papers have already been published or submitted.
-\begin{enumerate}[P.1,topsep=0pt]
-
-	\item Publication 1
-
-	\item Publication 2
-
-\end{enumerate}
-
 
 
 
@@ -253,11 +210,11 @@ The following major contributions have been accomplished during the course of th
 
 \begin{enumerate}[topsep=0pt]
 
-\item Developed ...
+\item Developed a robust neural network model that could accurately predict future sales for a period of 50 days using a 2 year period worth of sales and purchases information.
 
-\item Performed .....
+\item Performed a data cleaning task, analysis and training with the various Machine learning models and came up with a graphical output.
 
-\item Proposed a ....
+\item Proposed a multivariate input approach with other characteristics such as precipitational weather information and promotional sales.
 
 \end{enumerate}
 
@@ -268,7 +225,14 @@ The following major contributions have been accomplished during the course of th
 
 \section{Organization of the Report}
 
-This report has ***** chapters. 
+This report has 3 chapters. 
+
+\begin{itemize}
+	
+	\item   Introduction
+	\item   Analysis and Findings
+	\item 	Conclusion
+\end{itemize}
 
 % Describe what each chapter discusses.
 
@@ -422,17 +386,13 @@ This report has ***** chapters.
 
 %\bibliographystyle{alpha}
 
-\bibliographystyle{IEEEtran}
 
 
-\begin{thebibliography}{1}
 
-\bibitem{cisco}
-Cisco, "Cisco Visual Networking Index: Forecast and Trends, 2017–2022 White Paper \emph{Cisco Systems.Inc}, Document ID:1551296909190103, Updated February 27, 2019.
+\bibliographystyle{plain}
+\bibliography{doc}
 
-\bibitem{bisect} R. L. Burden and J. D. Faires, Numerical Analysis: Bisection Method, 9th Ed., Brooks/Cole, Cengage Learning, 20 Channel Center Street, Boston, MA 02210, USA, 2011.
 
-\end{thebibliography}
 
 
 %% the bibliography style determines the format  in which both citations and references are printed,
