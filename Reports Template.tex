@@ -6,6 +6,7 @@
 
 \usepackage{amssymb,amsmath,amsthm}
 
+
 \setlength{\intextsep}{1ex}
 
 %\usepackage[dvips]{graphicx}
@@ -81,7 +82,7 @@ Co-supervisor: \textbf{Prof. Eng. Dr. Peter Lating, iLabs Principal Investigator
 \vspace*{\stretch{0.2}}
 
 % Add date in desired format
-April 27, 2020
+December 7, 2020
 
 
 \vspace*{\stretch{0.2}}
@@ -102,7 +103,16 @@ A Report submitted in partial fulfillment of the requirements for the \\ \textbf
 
 \section*{Declaration}
 
-Add your declaration here.
+\textbf{ABRAHAM KAKOOZA JERRY}
+
+\emph{Academic Integrity Pledge:}
+
+\emph{
+  I HAVE ABIDED BY THE MAKERERE UNIVERSITY ACADEMIC INTEGRITY POLICY ON THIS
+ASSIGNMENT.
+}
+
+\emph{Signature} \hspace{0.5cm} \makebox[1.5in]{\hrulefill} \hspace{0.5cm} \emph{Date} \hspace{0.5cm} \makebox[1.5in]{\hrulefill}
 
 
 
@@ -136,8 +146,9 @@ Add acknowledgments.
 \section*{Abstract}
 
 
-Using a univariate time series analysis, we were able to validate different methods and approaches related to time series data preparation, analysis and forecast with an aim to facilitate recommending sales and marketing strategies based on trend/seasonality effects and forecasting sales of top five selling pharmaceutical products with diverse characteristics, such as stationarity, seasonality, amount of residuals and sales data variance. These drugs are Amoxicillin caps, Ampicloxa, Ceftriaxone Inj, Ciprofloxacin, Cotrimoxazole. 
-......
+To obtain inherent laws from vast amounts of pharmaceutical sales data and to provide valuable information to pharmacy managers, this work validates different methods and approaches to perform a sales forecast. Part of the data is used to train a neural network algorithm, with backpropagation for some methods, step by step, where shallow nets face selected scenarios, with different space-time data considerations. 
+
+\indent In each method, by using a sum of square differences, and a peak search procedure, a reasonable quality in the obtained abstract representations is pursued. First, an auto-encoder is trained to develop in its hidden layer neural data abstractions about a random-moving window. Thereafter by using the abstraction of the net plus recently captured information, a second shallow net is trained to produce its own one-day ahead estimates, using new timing and data procedures. After training, the whole stacked system’s performance is compared with the naive forecast scenario’s mean square error and if it's a better value, the method is used to produce stable daily forecasting for assorted products and periods. The system has been tested in real-time with real data.
 
 \newpage
 
@@ -160,7 +171,8 @@ Using a univariate time series analysis, we were able to validate different meth
 \begin{tabular}{p{3cm} l}
 	ARIMA	& Auto Regression Integrated Moving Average\\
 	LSTM	& Long Short Term Memory\\	
-	
+  MSE & Mean Square Error\\
+  KPI & Key Performance Indicator
 
 \end{tabular}
 
