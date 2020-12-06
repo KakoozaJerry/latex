@@ -411,53 +411,194 @@ Aimed at obtaining inherent laws of historical data series in pharmaceutical sal
 
 
 
-\chapter{Add another Chapter}
+\chapter{Methodology}
 
-\section{Introduction}
+\section{Materials and Methods}
 
 % Short Introduction
+We analyzed daily sales data for a period of 2 years by arranging it in a proper format to easily perform predictions with the same data file using Microsoft excel. 
+It was imported into the google colab jupyter notebook by a clone from GitHub, then using pandas passed into a variable for further processing.
+From box-plots, Cotrimoxazole had more outliers than the rest of the drugs which made it harder to predict future sales.
+ 
+ We also checked for presence of seasonality and trend with a 30 day and 365 day rolling mean graph. 
 
-\section{Mathematical Preliminaries}
+
+\begin{figure}[H]%[!ht]
+  \begin {center}
+  \includegraphics[width=0.45\textwidth]{images/download.png}
+  \caption{Box plots of the 5 selected drugs}
+  \label{fig:ecg}
+  \end {center}
+\end{figure}
+
+\begin{figure}[H]%[!ht]
+  \begin {center}
+  \includegraphics[width=0.45\textwidth]{images/download (10).png}
+  \includegraphics[width=0.45\textwidth]{images/download (12).png}
+  \caption{Illustration plot of the trend and rolling mean.}
+  \label{fig:ecg}
+  \end {center}
+\end{figure}
+
+
+\begin{figure}[H]%[!ht]
+  \begin {center}
+  \includegraphics[width=0.45\textwidth]{images/new.png}
+  \caption{Summary workflow chart.}
+  \label{fig:ecg}
+  \end {center}
+\end{figure}
+
+Included Components
+•	Keras: The Python Deep Learning library.
+•	Tensorflow: An open-source software library for Machine Intelligence.
+•	Github:An open-source platform to store code.
+•	GPU:A processing unit for computationally intense algorithms.
+
+
+
+  
+
+
+
+\section{Data and Results}
 
 % Add sections and (sub)subsections as appropriate
-
-
-\lipsum[2-4]
-
+\subsection{Naïve forecasting method}
+This was the baseline method since it is what most pharmacists use during the normal day to day operation of their business for drug replenishments. Below are the results in graphical format.Our forecast values were based on the last 50 days of our 2 year period data sample.
+\begin{figure}[H]%[!ht]
+  \begin {center}
+  \includegraphics[width=0.45\textwidth]{images/download (13).png}
+  \caption{Illustration plot of the naïve forecasting results.}
+  \label{fig:ecg}
+  \end {center}
+\end{figure}
 
 % Add other chapters and their (sub)(sub)sections as appropriate
 
+\subsection{ARIMA  method}
+
+ First, method arma\_order\_select\_ic was used to determine initial p and q parameters. The method computes Akaike’s Information Criterion (AIC) for many ARIMA models and chooses the best configuration. However, AIC is not used to score accuracy of the forecasting methods in this research. Mean squared error is used instead. For that, reason, grid search optimization method was applied, where different combinations of the hyper-parameters were used to calculate MSE and then, the combination producing the least MSE was chosen as optimal. Grid search optimization for rolling forecast produced the following best combinations of the hyper-parameters:
+ 
+Amoxyclin\_caps – Best ARIMA(1,0,0) MSE=1524.745
+
+
+\subsection{Forecasting with LSTM methods}
+
+Long-term forecasting validation has been done with three LSTM configurations: Vanilla LSTM, Stacked LSTM and Bi-directional LSTM. Relu activation function was used, optimizer was Adam and loss function was Mean Squared Error. The best results were achieved with training the model in 400 epochs. Before fitting, all data was standardized (rescaled in interval -1,1) and transformed to data for supervised problem.
+Number of past observations tested in input sequences was 5.
+
+\subsubsection{Vanilla LSTM}
+This is where we have one hidden layer within the neural network.
+In order to get reproducible results in forecasting with LSTM, following values are fixed: seed value, 'PYTHONHASHSEED' environment variable, Python's, numpy's and Tensorflow's built-in pseudo-random generators. A new global Tensorflow session is configured.Below are the results from the vanilla LSTM model.
+This model is unidirectional in the sense that the current output is only influenced by the past states and the current input.
+\begin{figure}[H]%[!ht]
+  \begin {center}
+  \includegraphics[width=0.45\textwidth]{dia.png}
+  \caption{Vanilla LSTM model Graphical Layout.}
+  \label{fig:ecg}
+  \end {center}
+\end{figure}
+
+\begin{figure}[H]%[!ht]
+  \begin {center}
+  \includegraphics[width=0.45\textwidth]{VanillaSummary.png}
+  \caption{Vanilla LSTM model Summary.}
+  \label{fig:ecg}
+  \end {center}
+\end{figure}
+  
+  \begin{figure}[H]%[!ht]
+  \begin {center}
+  \includegraphics[width=0.45\textwidth]{images/vanilla1 (2).png}
+  \includegraphics[width=0.45\textwidth]{images/vanilla1 (4).png}
+  \caption{Vanilla LSTM model results.}
+  \label{fig:ecg}
+  \end {center}
+  \end{figure}
+  
+  
+  Vanilla LSTM method
+
+  \subsubsection{Stacked LSTM method}
+
+This is also a unidirectional model where we have more than one hidden layer within the neural network.
+\begin{figure}[H]%[!ht]
+\begin {center}
+\includegraphics[width=0.45\textwidth]{StackedLstm.png}
+\caption{Stacked LSTM model Graphical Layout.}
+\label{fig:ecg}
+\end {center}
+\end{figure}
+
+\begin{figure}[H]%[!ht]
+\begin {center}
+\includegraphics[width=0.45\textwidth]{StackedLstm1.png}
+\caption{Stacked LSTM model Summary.}
+\label{fig:ecg}
+\end {center}
+\end{figure}
+
+
+\begin{figure}[H]%[!ht]
+\begin {center}
+\includegraphics[width=0.45\textwidth]{images/stacked (3).png}
+\label{fig:ecg}
+\end {center}
+\end{figure}
+
+\begin{figure}[H]%[!ht]
+\begin {center}
+\includegraphics[width=0.45\textwidth]{images/stacked (2).png}
+\caption{Stacked LSTM model results.}
+\label{fig:ecg}
+\end {center}
+\end{figure}
+
+\subsubsection{Bidirectional LSTM}
+
+In bidirectional RNNs, future states can also influence the present state and the past states by allowing information to flow backward. Past outputs are updated as needed depending on the new information received.
+
+\begin{figure}[H]%[!ht]
+\begin {center}
+\includegraphics[width=0.45\textwidth]{Bidirectional.png}
+\caption{Bidirectional LSTM model Graphical Layout.}
+\label{fig:ecg}
+\end {center}
+\end{figure}
+
+\begin{figure}[H]%[!ht]
+\begin {center}
+\includegraphics[width=0.45\textwidth]{Bidirectional1.png}
+\caption{Bidirectional LSTM model Summary.}
+\label{fig:ecg}
+\end {center}
+\end{figure}
+
+\begin{figure}[H]%[!ht]
+\begin {center}
+\includegraphics[width=0.45\textwidth]{images/bi (5).png}
+\includegraphics[width=0.45\textwidth]{images/bi (6).png}
+\caption{Bidirectional LSTM model results.}
+\label{fig:ecg}
+\end {center}
+\end{figure}
 
 
 
 
-
-
-\chapter{Numerical Results}
+\chapter{Discussion}
 
 % Usually, start with a table of parameters similar to the one below, if this applies to your project.
+Figure 14 shows that all the methods used have a less MSE than the currently used Naive forecasting methods.\\
+\begin{figure}[H]%[!ht]
+\begin {center}
+\includegraphics[width=0.45\textwidth]{images/chart.png}
+\caption{MSE overall results.}
+\label{fig:ecg}
+\end {center}
+\end{figure}
 
-
-\begin{table}[H]
-\caption{Simulation Parameters} % title of Table
-\centering % used for centering table
-    \begin{tabular}{| l | l |}
-	 \hline\hline
-    Parameters & Values \\ \hline
-    Network size &  $A = 5\,\text{km}\times 5\,\text{km}$ \\ \hline
-    Total BS bandwidth &  $\mathcal{B}=20\,\text{MHz}$ \\ \hline
-		BS and user densities &  $\lambda_b = 1.6\times 10^{-5}\,\,\text{m}^2$, $\lambda_u = 2\lambda_b$  \\ \hline
-    Transmit power &  $P_t = 21\, \text{dBm}$ \\ \hline
-    Pathloss parameters & $L = -33\,\text{dB}$, $\alpha=4$ \\ \hline
-    Power parameters & $\mathcal{N}_b = 2$, $P_0=6.8\,\text{W}$, $\Delta=4$, $P_{sl}=4.3$ \\\hline	
-    Additive noise parameters & $F = 10$, $T_a = 300\,\text{K}$\\\hline		
-\end{tabular}
-%\label{tab:parameters-sleep-mode} 
-\end{table}
-
-
-
-\lipsum[2-4]
 
 
 
@@ -468,11 +609,16 @@ Aimed at obtaining inherent laws of historical data series in pharmaceutical sal
 \section{Conclusions}
 
 %Conclude here
+\subsection{Summary of findings}
+This shows that the ARIMA gives the lowest MSE compared to the rest of the models.
+\subsection{Limitations of Study}
+Among the shortcomings of our research are the reluctance of most pharmacies especially those able to provide us with the long time-span data to avail us with this information considering it is company sensitive and only known to a specific set of employees.
 
+\subsection{Recommendations}
+We suggest that more data sets are used with a longer lifetime span of about 5 years worth data.We also suggest the incorporation of other secondary dependent features that affect the sales such as weather patterns, promotional sales, marketing elements in order to get more accurate results. 
 
-\lipsum[2-4]
-
-
+\subsection{Acknowledgements}
+We thank Dr.Andrew Katumba for the support offered at every stage of this project from day 1, he is a key component to enabling us see this idea to fruitation. We also acknowledge the management of Soteria pharmacy in Luweero district. Specifically Ms. Brenda that availed us with the required information and data plus explaining the entire workflow of the pharmacy purchasing process to us.\\
 
 \section{Ideas for Future Work}
 
