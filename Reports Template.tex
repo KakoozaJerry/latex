@@ -1,11 +1,98 @@
-
+%FROMHERE
 \documentclass[12pt]{report}
+\usepackage{bm}
+\usepackage[a4paper,bindingoffset=25mm,%
+            left=0mm,right=15mm,top=15mm,bottom=15mm,%
+            footskip=5mm]{geometry}
+
+%\usepackage{geometry}
+
+
+\usepackage{relsize}
+%\usepackage[Lenny]{fncychap}
+\usepackage{verbatim}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{listings}
+\usepackage{etoolbox}
+
+\usepackage{empheq}
+\usepackage{longtable}
+\geometry{
+	a4paper,
+	left = 25.5mm,
+	top = 0mm,
+	bottom = 25.5mm,
+}
+\usepackage{amsmath, amsthm, amssymb}
+%\usepackage{nomencl}HERE
+\usepackage{amsmath}
+\usepackage{amsmath, amsthm, amssymb}
+\usepackage{graphicx}
+\usepackage{epstopdf}
+%\usepackage{tabularx}
+%\usepackage{breqn} 
+\usepackage{caption}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{latexsym}
+\usepackage{graphicx}
+\usepackage{bm}
+\usepackage{amssymb}
+\usepackage{array}
+\usepackage{setspace}
+\usepackage{fancyhdr}
+%\usepackage{citesort}
+\usepackage{epstopdf}
+\usepackage{xcolor}
+%HERE
+\usepackage{epstopdf}
+\usepackage{caption}
+\usepackage{float}
+\usepackage{latexsym}
+\usepackage{array}
+\usepackage{acronym}
+\usepackage{setspace}
+\usepackage{fancyhdr}
+\usepackage{xcolor}
+\usepackage{multicol}
+\usepackage{lipsum}
+\usepackage{verbatim}
+\usepackage{layaureo}
+\usepackage{chngpage}
+\usepackage{amsfonts}
+\usepackage{makeidx}
+\usepackage{slashbox}
+\makeindex
+\usepackage{enumerate}
+\usepackage{calligra}
+\usepackage[font={footnotesize}]{caption}
+\usepackage[scr=boondoxo,
+scrscaled=1.15,]{mathalfa}
+\usepackage{multirow}
+\usepackage{cite}
+\usepackage{graphicx}
+\usepackage{epstopdf}
+\usepackage{url}
+\usepackage[bookmarks, colorlinks=false, pdfborder={0 0 0}, pdftitle={<pdf title here>}, pdfauthor={<author's name here>}, pdfsubject={<subject here>}, pdfkeywords={<keywords here>}]{hyperref} 
+
+%TOHERE
+
+%\usepackage[style=ieee]{cite}
+%\usepackage{cite}
+%\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+%\usepackage[square,numbers]{natbib}
+%\bibliographystyle{IEEEtranN}
 
 \usepackage{setspace}
 \onehalfspacing %doublespace %
 
 \usepackage{amssymb,amsmath,amsthm}
 
+\usepackage{cite}
 
 \setlength{\intextsep}{1ex}
 
@@ -15,12 +102,9 @@
 \renewcommand{\qedsymbol}{\rule{0.4em}{0.4em}}
 \usepackage{tabularx}
 
-\usepackage[a4paper,bindingoffset=25mm,%
-            left=0mm,right=15mm,top=15mm,bottom=15mm,%
-            footskip=5mm]{geometry}
 
 \usepackage{lipsum}  
- 
+%\usepackage{cite}
 
 \usepackage{float}
 \setlength{\intextsep}{1ex}
@@ -44,7 +128,7 @@
 \setlength\parindent{0pt}
 \setlength{\unitlength}{1cm} 
 
-
+%\documentclass{article}
 \begin{document}
 
 \begin{titlepage}
@@ -172,7 +256,8 @@ To obtain inherent laws from vast amounts of pharmaceutical sales data and to pr
 	ARIMA	& Auto Regression Integrated Moving Average\\
 	LSTM	& Long Short Term Memory\\	
   MSE & Mean Square Error\\
-  KPI & Key Performance Indicator
+  KPI & Key Performance Indicator\\
+  API & Application Programming Interface
 
 \end{tabular}
 
@@ -190,11 +275,10 @@ A good sales forecast is usually associated with striking a balance between stoc
 
 To specific case of pharmacies in Uganda, the problem is of particular importance due to the short cycle life of many products and the importance of quality which is in turn strongly linked to public health.
 
-Before digital technology dominated the world, the forecasting process was done manually by experienced individuals in the domain. This intuition required a lot of experience and was prone to error. Such a multifaceted problem started to realize the need for automating the pharmacy sales forecasting process. Research has been carried out with statistical, machine learning, deep learning and ensemble techniques to achieve more accurate sales forecasts. \cite{Perera2019}\\
+%Before digital technology dominated the world, the forecasting process was done manually by experienced individuals in the domain. This intuition required a lot of experience and was prone to error. Such a multifaceted problem started to realize the need for automating the pharmacy sales forecasting process. Research has been carried out with statistical, machine learning, deep learning and ensemble techniques to achieve more accurate sales forecasts. \cite{Perera2019}\\
 
 During our research study of Soteria Pharmacy procurement process with an interview of Ms.Brenda the incharge of this, we realised she uses personal judgement of current stock levels athand and the rate at which people come in to ask for a ceratin drug then determine how much more stock should be purchased.Given her difficulties in accurately predicting the future sales,this report explores the product sales forecast at the indiviual level of this Pharmacy.I made a forecast for 5 sold drugs.The forecast was based on analysis of  historical data for a period of 24 months and future results analyses of 50 days determined.ARIMA and LSTM methods were used in the sales forecast of which the best model was recommended including a conclusive way of improving our results.
 \section{Aims and Objectives}
-
 The main aim of the research project was to precisely predict sales of drugs and medical supplies.
 
 The specific objectives  were:
@@ -206,6 +290,8 @@ The specific objectives  were:
 \item To train and validate datasets with ARIMA and LSTM models.
 
 \item To optimize the best model algorithm for accurate performance.
+
+\item To develop  a web API for pharmacies.
 
 \end{itemize}
 
@@ -267,20 +353,21 @@ This report has 3 chapters.
 
 
 
-\chapter{Heading of Chapter 2}
+\chapter{Literature Review}
 % Usually Literature Review
 
 \section{Introduction}
 
 % Start with an introduction
+People act on the basis of forecasting models whether they are on paper or in their heads. One is better off quantifying these estimations so as to discuss them rationally as opposed to making them based on intuition. For pharmaceutical distribution companies, it is essential to get good estimates of drugs, due to the short shelf life of many medicines and the need to control stock levels, to avoid excessive inventory costs while guaranteeing customer demand satisfaction, and thus decreasing the possibility of a loss of customers due to stock outages.
+Stock management, transportations, and financial spends contain a high percentage of total pharmaceutical companies’ expenses. As a rule, companies pay immediately when buy medications from manufacturers, and then sales compensate these spend gradually. This gap is a danger of unplanned expenses to occur. Therefore, the majority of distributors in this industry look for modern and precise forecasting methods of future sales to decrease purchase and storage costs and to increase profit by meeting clients’ needs timely.
+Common existing forecasting methods are ineffective for pharmaceutical companies because these methods require a large dataset of each medication sales. In its turn, medications are constantly replaced by analogs or refreshed to enhance pharmacological effects or reduce collateral effects.
 
 
-\section{....}
+\section{Literature Review}
 
 % Add sections and (sub)subsections as appropriate
-
-
-\lipsum[2-4]
+Consequently, it is required to build an accurate forecasting model of pharmaceutical preparations sales using one of the machine learning methods taking into account constant medications refreshment and a lack of previous sales data \cite{1}.
 
 
 
@@ -403,14 +490,16 @@ This report has 3 chapters.
 
 %\bibliographystyle{alpha}
 
+\medskip
+%\bibliographystyle{IEEEtranN}
+%\bibliography{doc}
+%\bibliography{References}
 
 
-
-\bibliographystyle{plain}
-\bibliography{doc}
-
-
-
+\begin{thebibliography}{1}
+    \bibitem{1}
+        J.S.~Baras, M.~Hadjitheodosiou, S.~Papademetriou, A.~Roy-Chowdhury "Secrecy Outage Performance of MIMO Wiretap Channels with Multiple Jamming Signals,” \emph{J. of Commun. and Inform. Syst.,} vol. 31, no. 1, pp. 30-40, 2016. \hskip 1em plus 0.5em minus 0.4em \relax 
+\end{thebibliography}		
 
 %% the bibliography style determines the format  in which both citations and references are printed,
 %% other possible values are plain and abbrv
