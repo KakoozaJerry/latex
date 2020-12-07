@@ -195,8 +195,33 @@ A Report submitted in partial fulfillment of the requirements for the \\ \textbf
   I HAVE ABIDED BY THE MAKERERE UNIVERSITY ACADEMIC INTEGRITY POLICY ON THIS
 ASSIGNMENT.
 }
+I also confirm that this report is only prepared for my academic requirement, not for any other
+purpose.
+
 
 \emph{Signature} \hspace{0.5cm} \makebox[1.5in]{\hrulefill} \hspace{0.5cm} \emph{Date} \hspace{0.5cm} \makebox[1.5in]{\hrulefill}
+
+\newpage
+
+
+\section*{Approval}
+
+\vspace{2cm}
+\begin{center}
+  This report has been submitted with approval and under the supervision of the following
+  supervisors.\\
+  
+  Supervisor
+
+  \emph{Dr.Andrew Katumba} \hspace{0.5cm} \makebox[1.5in]{\hrulefill} \hspace{0.5cm} \emph{Date} \hspace{0.5cm} \makebox[1.5in]{\hrulefill}
+
+  Co-Supervisor
+
+  \emph{Prof.Peter Lating} \hspace{0.5cm} \makebox[1.5in]{\hrulefill} \hspace{0.5cm} \emph{Date} \hspace{0.5cm} \makebox[1.5in]{\hrulefill}
+
+
+\end{center}
+
 
 
 
@@ -207,7 +232,7 @@ ASSIGNMENT.
 
 \vspace{2cm}
 \begin{center}
-I dedicate this to my parents who have been there for me in this entire study period both emotionally and financially .
+I dedicate this to my parents who have been there for me in this entire study period both emotionally and financially, my supervisor Dr. Andrew Katumba, my mentors Tibabwetiza Joel, my partner Kevin Upyem, and lastly the entire ilabs team Mark Phillip and Ronald Ogwang .
 \end{center}
 
 
@@ -215,13 +240,12 @@ I dedicate this to my parents who have been there for me in this entire study pe
 \newpage
 
 \section*{Acknowledgments}
+First of all, I would like to thank God for enabling me to complete my Final Year Project successfully. I also extend my gratitude ti the ilabs at Mak Project for the opportunity to work with them which has given me a wealth of skills and experience to build my engineering career.\\
 
-Add acknowledgments. 
+I highly acknowledge my main supervisor Dr. Andrew Katumba and my co-supervisor Prof. Peter Lating for the support, guidance and knowledge provided at each step of this project.\\
+I highly acknowledge my mentors David Tusubira and Tibabwetiza Joel for the guidance and support.
 
-
-\lipsum[2-4]
-
-
+Lastly I would like to thank the Soteria Pharmacy community, Ms. Brenda , Ms.Lydia Ssebunya and the ilabs team Mark Phillip and Ogwang Ronnie for the collective support. 
 
 \newpage
 
@@ -413,6 +437,19 @@ Aimed at obtaining inherent laws of historical data series in pharmaceutical sal
 
 \chapter{Methodology}
 
+\section{Machine Learning}
+
+\subsection{Introduction}
+
+Machine learning is a subfield of artificial intelligence (AI). The goal of machine learning generally is to understand the structure of data and fit that data into models that can be understood and utilized by people.
+
+Although machine learning is a field within computer science, it differs from traditional computational approaches. In traditional computing, algorithms are sets of explicitly programmed instructions used by computers to calculate or problem solve. Machine learning algorithms instead allow for computers to train on data inputs and use statistical analysis in order to output values that fall within a specific range. Because of this, machine learning facilitates computers in building models from sample data in order to automate decision-making processes based on data inputs.
+
+Any technology user today has benefitted from machine learning. Facial recognition technology allows social media platforms to help users tag and share photos of friends. Optical character recognition (OCR) technology converts images of text into movable type. Recommendation engines, powered by machine learning, suggest what movies or television shows to watch next based on user preferences. Self-driving cars that rely on machine learning to navigate may soon be available to consumers.
+
+Machine learning is a continuously developing field. Because of this, there are some considerations to keep in mind as you work with machine learning methodologies, or analyze the impact of machine learning processes.\cite{12}
+
+
 \section{Materials and Methods}
 
 % Short Introduction
@@ -456,16 +493,38 @@ Included Components
 •	GPU:A processing unit for computationally intense algorithms.
 
 
-
+\section{Time Series Forecast}
   
+A time series is usually modelled through a stochastic process Y(t), i.e. a sequence of random variables. In a forecasting setting we find ourselves at time t and we are interested in estimating Y(t+h), using only information available at time t.\cite{13}
+Anything that is observed sequentially over time is a time series.
+When forecasting time series data, the aim is to estimate how the sequence of observations will continue into the future.
+Forecasting involves taking models fit on historical data and using them to predict future observations.
 
+Descriptive models can borrow for the future (i.e. to smooth or remove noise), they only seek to best describe the data.
+The skill of a time series forecasting model is determined by its performance at predicting the future. This is often at the expense of being able to explain why a specific prediction was made, confidence intervals and even better understanding the underlying causes behind the problem.
 
+\textbf{Components of Time Series} \\
+Time series analysis provides a body of techniques to better understand a dataset.
+
+Perhaps the most useful of these is the decomposition of a time series into 4 constituent parts:
+
+\begin{enumerate}
+  \item Level. The baseline value for the series if it were a straight line.
+  \item Trend. The optional and often linear increasing or decreasing behavior of the series over time.
+  \item Seasonality. The optional repeating patterns or cycles of behavior over time.
+  \item Noise. The optional variability in the observations that cannot be explained by the model.
+All time series have a level, most have noise, and the trend and seasonality are optional.
+
+\end{enumerate}
 
 \section{Data and Results}
 
 % Add sections and (sub)subsections as appropriate
 \subsection{Naïve forecasting method}
 This was the baseline method since it is what most pharmacists use during the normal day to day operation of their business for drug replenishments. Below are the results in graphical format.Our forecast values were based on the last 50 days of our 2 year period data sample.
+This uses a day time shift of the previous sales to predict future sales. As a case study for soteria pharmacy in luweero district, they normally use intuition similar to this whereby the next day purchases are made basic on the previous day sales and hoping the same trend.
+With our time day shift results , we modelled a naive forecasting scenario and were able to assume this as the result of what is currently being used considering most pharmacy procurement personnel use intuition.Figure 3.4 shows the plots obtained from the naive forecast scenario.
+
 \begin{figure}[H]%[!ht]
   \begin {center}
   \includegraphics[width=0.45\textwidth]{images/download (13).png}
@@ -478,13 +537,34 @@ This was the baseline method since it is what most pharmacists use during the no
 
 \subsection{ARIMA  method}
 
+ARIMA, short for ‘Auto Regressive Integrated Moving Average’ is actually a class of models that ‘explains’ a given time series based on its own past values, that is, its own lags and the lagged forecast errors, so that equation can be used to forecast future values.\\
+
+An ARIMA model is characterized by 3 terms: p, d, q
+
+where,\\
+
+p is the order of the Auto Regression(AR) term\\
+
+q is the order of the Moving Average(MA) term\\
+
+d is the number of differencing required to make the time series stationary\\
+
+
+A pure Auto Regressive (AR only) model is one where Yt depends only on its own lags. That is, Yt is a function of the ‘lags of Yt’.\\
+
+Likewise a pure Moving Average (MA only) model is one where Yt depends only on the lagged forecast errors.\\
+
+
  First, method arma\_order\_select\_ic was used to determine initial p and q parameters. The method computes Akaike’s Information Criterion (AIC) for many ARIMA models and chooses the best configuration. However, AIC is not used to score accuracy of the forecasting methods in this research. Mean squared error is used instead. For that, reason, grid search optimization method was applied, where different combinations of the hyper-parameters were used to calculate MSE and then, the combination producing the least MSE was chosen as optimal. Grid search optimization for rolling forecast produced the following best combinations of the hyper-parameters:
  
 Amoxyclin\_caps – Best ARIMA(1,0,0) MSE=1524.745
 
 
 \subsection{Forecasting with LSTM methods}
+Long Short-Term Memory (LSTM) networks are a type of recurrent neural network capable of learning order dependence in sequence prediction problems.\\
+Recurrent neural networks are different from traditional feed-forward neural networks.
 
+This difference in the addition of complexity comes with the promise of new behaviors that the traditional methods cannot achieve.\\
 Long-term forecasting validation has been done with three LSTM configurations: Vanilla LSTM, Stacked LSTM and Bi-directional LSTM. Relu activation function was used, optimizer was Adam and loss function was Mean Squared Error. The best results were achieved with training the model in 400 epochs. Before fitting, all data was standardized (rescaled in interval -1,1) and transformed to data for supervised problem.
 Number of past observations tested in input sequences was 5.
 
@@ -518,7 +598,7 @@ This model is unidirectional in the sense that the current output is only influe
   \end{figure}
   
   
-  Vanilla LSTM method
+ 
 
   \subsubsection{Stacked LSTM method}
 
@@ -584,13 +664,20 @@ In bidirectional RNNs, future states can also influence the present state and th
 \end {center}
 \end{figure}
 
-
-
+\section{Web API}
+I then built a web API that can be used by pharmacy managers using the streamlit python framework. One is able to select one of the various machine learning models in a drop down selection menu as shown below.
+\begin{figure}[H]%[!ht]
+  \begin {center}
+  \includegraphics[width=0.45\textwidth]{images/WebApp.PNG}
+  \caption{Web App API.}
+  \label{fig:ecg}
+  \end {center}
+  \end{figure}
 
 \chapter{Discussion}
 
 % Usually, start with a table of parameters similar to the one below, if this applies to your project.
-Figure 14 shows that all the methods used have a less MSE than the currently used Naive forecasting methods.\\
+Figure 4.1 shows that all the methods used have a less MSE than the currently used Naive forecasting methods.\\
 \begin{figure}[H]%[!ht]
 \begin {center}
 \includegraphics[width=0.45\textwidth]{images/chart.png}
@@ -599,7 +686,7 @@ Figure 14 shows that all the methods used have a less MSE than the currently use
 \end {center}
 \end{figure}
 
-
+However with more data of about 5 years or more, better results can be obtained for the LSTM methods .
 
 
 % End with a conclusion chapter
@@ -618,10 +705,10 @@ Among the shortcomings of our research are the reluctance of most pharmacies esp
 We suggest that more data sets are used with a longer lifetime span of about 5 years worth data.We also suggest the incorporation of other secondary dependent features that affect the sales such as weather patterns, promotional sales, marketing elements in order to get more accurate results. 
 
 \subsection{Acknowledgements}
-We thank Dr.Andrew Katumba for the support offered at every stage of this project from day 1, he is a key component to enabling us see this idea to fruitation. We also acknowledge the management of Soteria pharmacy in Luweero district. Specifically Ms. Brenda that availed us with the required information and data plus explaining the entire workflow of the pharmacy purchasing process to us.\\
+I thank Dr.Andrew Katumba for the support offered at every stage of this project from day 1, he is a key component to enabling us see this idea to fruitation. We also acknowledge the management of Soteria pharmacy in Luweero district. Specifically Ms. Brenda that availed us with the required information and data plus explaining the entire workflow of the pharmacy purchasing process to us.\\
 
 \section{Ideas for Future Work}
-
+Incorparating a multivariate model that makes use of various input data to forecast the results such as weather data ,promotion sales data e.t.c
 % Add any ideas for further work here
 
 
@@ -683,6 +770,18 @@ We thank Dr.Andrew Katumba for the support offered at every stage of this projec
     \bibitem{11}
     XiaoDing, ~YueZhang, ~TingLiu, ~JunwenDuan, ~Mladen ~Dalto, "Deep neural networks for time series prediction with applications in ultrashort-term wind forecasting time series I” \emph{University of Zagreb, Faculty of Electrical Engineering and Computing}  \hskip 1em plus 0.5em minus 0.4em \relax 
 
+    \bibitem{12}
+     
+    Lisa ~Tagliaferri"An Introduction to Machine Learning” \emph{https://www.digitalocean.com/community/tutorials/an-introduction-to-machine-learning}  \hskip 1em plus 0.5em minus 0.4em \relax 
+
+
+    \bibitem{13}
+     
+    Davide ~Burba"An overview of time series forecasting models” \emph{https://towardsdatascience.com/an-overview-of-time-series-forecasting-models-a2fa7a358fcb}  \hskip 1em plus 0.5em minus 0.4em \relax 
+
+
+    
+
 \end{thebibliography}		
 
 %% the bibliography style determines the format  in which both citations and references are printed,
@@ -702,6 +801,39 @@ We thank Dr.Andrew Katumba for the support offered at every stage of this projec
 
 \chapter{Appendix}
 
-\lipsum[2-3]
+
+\begin{figure}[H]%[!ht]
+  \begin {center}
+  \includegraphics[width=0.45\textwidth]{images/NaiveCode.PNG}
+  \caption{My Naive forecast code Base on Google Colab}
+  \label{fig:ecg}
+  \end {center}
+\end{figure}
+  
+\begin{figure}[H]%[!ht]
+  \begin {center}
+  \includegraphics[width=0.45\textwidth]{images/VanillaLSTM.PNG}
+  \caption{My Vanilla LSTM forecast code Base on Google Colab}
+  \label{fig:ecg}
+  \end {center}
+\end{figure}
+
+\begin{figure}[H]%[!ht]
+  \begin {center}
+  \includegraphics[width=0.45\textwidth]{images/StackedLSTM.PNG}
+  \caption{My Stacked LSTM forecast code Base on Google Colab}
+  \label{fig:ecg}
+  \end {center}
+\end{figure}
+
+
+\begin{figure}[H]%[!ht]
+  \begin {center}
+  \includegraphics[width=0.45\textwidth]{images/MSEresults.PNG}
+  \caption{Results of the machine learning forecast}
+  \label{fig:ecg}
+  \end {center}
+\end{figure}
+
 
 \end{document}
