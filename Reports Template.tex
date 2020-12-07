@@ -281,7 +281,8 @@ To obtain inherent laws from vast amounts of pharmaceutical sales data and to pr
 	LSTM	& Long Short Term Memory\\	
   MSE & Mean Square Error\\
   KPI & Key Performance Indicator\\
-  API & Application Programming Interface
+  API & Application Programming Interface\\
+  GPU & Graphical Processing Unit
 
 \end{tabular}
 
@@ -405,7 +406,7 @@ Aimed at obtaining inherent laws of historical data series in pharmaceutical sal
 \section{Summary}
 % End your chapter with a short summary.
 
-
+The results from the various models are to be verified using the mean square error estimator.(MSEE) The MSE is the average of the squared  differences in the values between the actual real outcome and the predicted outcome using our model. I use the MSE as a key performance indicator in order to judge if my model is performing better than those already in existance.
 
 
 
@@ -462,7 +463,7 @@ From box-plots, Cotrimoxazole had more outliers than the rest of the drugs which
 
 \begin{figure}[H]%[!ht]
   \begin {center}
-  \includegraphics[width=0.75\textwidth]{images/download.png}
+  \includegraphics[width=0.55\textwidth]{images/download.png}
   \caption{Box plots of the 5 selected drugs}
   \label{fig:ecg}
   \end {center}
@@ -486,12 +487,13 @@ From box-plots, Cotrimoxazole had more outliers than the rest of the drugs which
   \end {center}
 \end{figure}
 
-Included Components
-•	Keras: The Python Deep Learning library.
-•	Tensorflow: An open-source software library for Machine Intelligence.
-•	Github:An open-source platform to store code.
-•	GPU:A processing unit for computationally intense algorithms.
-
+Included Components\\
+\begin{enumerate}
+  \item Keras: The Python Deep Learning library.
+  \item Tensorflow: An open-source software library for Machine Intelligence.
+  \item Github:An open-source platform to store code.
+  \item Graphical Processing Unit(GPU):A processing unit for computationally intense algorithms.
+\end{enumerate}
 
 \section{Time Series Forecast}
   
