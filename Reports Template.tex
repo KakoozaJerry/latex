@@ -189,6 +189,8 @@ A Report submitted in partial fulfillment of the requirements for the \\ \textbf
 
 \textbf{ABRAHAM KAKOOZA JERRY}
 
+I declare that this research was completed with support from Soteria Pharmacy in Luweero District for the period from 1st August 2019 to 4th December 2020.
+
 \emph{Academic Integrity Pledge:}
 
 \emph{
@@ -209,14 +211,20 @@ purpose.
 \vspace{2cm}
 \begin{center}
   This report has been submitted with approval and under the supervision of the following
-  supervisors.\\
+  supervisors:\\
   
-  Supervisor
+  Main Supervisor\\
+  Lecturer\\
+  Department of Electrical and Computer Engineering,\\
+  Makerere University\\
 
   \emph{Dr.Andrew Katumba} \hspace{0.5cm} \makebox[1.5in]{\hrulefill} \hspace{0.5cm} \emph{Date} \hspace{0.5cm} \makebox[1.5in]{\hrulefill}
 
-  Co-Supervisor
-
+ 
+  Co-Supervisor\\
+  Lecturer\\
+  Department of Electrical and Computer Engineering,\\
+  Makerere University\\
   \emph{Prof.Peter Lating} \hspace{0.5cm} \makebox[1.5in]{\hrulefill} \hspace{0.5cm} \emph{Date} \hspace{0.5cm} \makebox[1.5in]{\hrulefill}
 
 
@@ -232,7 +240,7 @@ purpose.
 
 \vspace{2cm}
 \begin{center}
-I dedicate this to my parents who have been there for me in this entire study period both emotionally and financially, my supervisor Dr. Andrew Katumba, my mentors Tibabwetiza Joel, my partner Kevin Upyem, and lastly the entire ilabs team Mark Phillip and Ronald Ogwang .
+I , Kakooza Abraham Jerry , dedicate this to my parents who have been there for me in this entire study period both emotionally and financially, my supervisor Dr. Andrew Katumba, my mentors Tibabwetiza Joel, my partner Kevin Upyem, and lastly the entire ilabs team Mark Phillip and Ronald Ogwang .
 \end{center}
 
 
@@ -240,7 +248,7 @@ I dedicate this to my parents who have been there for me in this entire study pe
 \newpage
 
 \section*{Acknowledgments}
-First of all, I would like to thank God for enabling me to complete my Final Year Project successfully. I also extend my gratitude ti the ilabs at Mak Project for the opportunity to work with them which has given me a wealth of skills and experience to build my engineering career.\\
+I would like to thank God for enabling me to complete my Final Year Project successfully. I also extend my gratitude ti the ilabs at Mak Project for the opportunity to work with them which has given me a wealth of skills and experience to build my engineering career.\\
 
 I highly acknowledge my main supervisor Dr. Andrew Katumba and my co-supervisor Prof. Peter Lating for the support, guidance and knowledge provided at each step of this project.\\
 I highly acknowledge my mentors David Tusubira and Tibabwetiza Joel for the guidance and support.
@@ -290,8 +298,10 @@ To obtain inherent laws from vast amounts of pharmaceutical sales data and to pr
 \newpage
 
 \chapter{Introduction}
+This chapter gives a brief explanation of the project background, problem statement,
+justification, objectives, and a summary of the methodology.
 
-\section{Background}
+\section{Project Background}
 One of the responsibilities of pharmacies in  Uganda is to have a minimum stock of medicines.This ensures patients can have it when prescribed.
 
 In addition, pharmacies need to get a good forecast of the medication needs due to the short term validity of many medicines and the need to control stock levels.This avoids excessive costs and loss of customers due to stock outages.\\
@@ -303,6 +313,26 @@ To specific case of pharmacies in Uganda, the problem is of particular importanc
 %Before digital technology dominated the world, the forecasting process was done manually by experienced individuals in the domain. This intuition required a lot of experience and was prone to error. Such a multifaceted problem started to realize the need for automating the pharmacy sales forecasting process. Research has been carried out with statistical, machine learning, deep learning and ensemble techniques to achieve more accurate sales forecasts. \cite{Perera2019}\\
 
 During our research study of Soteria Pharmacy procurement process with an interview of Ms.Brenda the incharge of this, we realised she uses personal judgement of current stock levels athand and the rate at which people come in to ask for a ceratin drug then determine how much more stock should be purchased.Given her difficulties in accurately predicting the future sales,this report explores the product sales forecast at the indiviual level of this Pharmacy.I made a forecast for 5 sold drugs.The forecast was based on analysis of  historical data for a period of 24 months and future results analyses of 50 days determined.ARIMA and LSTM methods were used in the sales forecast of which the best model was recommended including a conclusive way of improving our results.
+
+
+
+
+
+\section{Problem Statement}
+Our solution is addressing the high volumes of expiring drugs before purchase in pharmacies.
+We anticipate that with an insight into the future sales, you can make the right purchases which
+in turn minimises the inventory expenditure to incarcerate the expired medicines. Currently
+pharmacies are using intuition from domain experts to identify the amount of stock to purchase
+based on their current time of work in a particular place who may not be able to process large
+amounts of information to cater for promotional offer sales, decision buys from wholesalers,
+rotational nature of pharmacy personnel especially in large pharmacies with like first pharmacy
+or even in case of a new entrant, may find a steep start up adjustment curve from wrong
+estimations.
+
+
+
+
+
 \section{Aims and Objectives}
 The main aim of the research project was to precisely predict sales of drugs and medical supplies.
 
@@ -387,6 +417,14 @@ This report has 3 chapters.
 People act on the basis of forecasting models whether they are on paper or in their heads. One is better off quantifying these estimations so as to discuss them rationally as opposed to making them based on intuition. For pharmaceutical distribution companies, it is essential to get good estimates of drugs, due to the short shelf life of many medicines and the need to control stock levels, to avoid excessive inventory costs while guaranteeing customer demand satisfaction, and thus decreasing the possibility of a loss of customers due to stock outages.
 Stock management, transportations, and financial spends contain a high percentage of total pharmaceutical companies’ expenses. As a rule, companies pay immediately when buy medications from manufacturers, and then sales compensate these spend gradually. This gap is a danger of unplanned expenses to occur. Therefore, the majority of distributors in this industry look for modern and precise forecasting methods of future sales to decrease purchase and storage costs and to increase profit by meeting clients’ needs timely.
 Common existing forecasting methods are ineffective for pharmaceutical companies because these methods require a large dataset of each medication sales. In its turn, medications are constantly replaced by analogs or refreshed to enhance pharmacological effects or reduce collateral effects.
+\\
+
+
+
+Health forecasting is a novel area of forecasting,and a valuable tool for predicting future health
+events or situations such as demands for health services and healthcare needs. It facilitates
+preventive medicine and health care intervention strategies, by pre-informing health service
+providers to take appropriate mitigating actions to minimize risks and manage demand.
 
 
 \section{Literature Review}
@@ -401,6 +439,81 @@ In the deep learning world, state-of-the-art performance has gained a good reput
 physiological effect modeling \cite{7}, and many others. More recently papers on time-series prediction or classification with deep neural networks have been reported. \cite{8,9,10,11}
 Aimed at obtaining inherent laws of historical data series in pharmaceutical sales, and forecasting the demand, controlling the inventory, reducing the costs, and improving the service level, this paper designs research on the data records from a pharmacy and presents different forecasting algorithms. The testing results provide support for the fact that these algorithms greatly improve the forecast accuracy from the naive forecasting method.
 
+\section{Data Collection}
+
+Data mining is the search of relationships, patterns, or models that are implied on data stored
+in large databases. It can be seen as the process of exploiting large amounts of data for the
+purpose of identification of consistent standards, such as rules of association or time sequences
+to detect systematic relationships between variables. Uses algorithms to discover rules, identify
+factors and key trends, discover hidden patterns and relationships in large databases; this
+information after being interpreted, is used to support decision making organizational.
+
+\section{Machine Learning}
+
+\subsection{Introduction}
+
+Machine learning is a subfield of artificial intelligence (AI). The goal of machine learning generally is to understand the structure of data and fit that data into models that can be understood and utilized by people.
+
+Although machine learning is a field within computer science, it differs from traditional computational approaches. In traditional computing, algorithms are sets of explicitly programmed instructions used by computers to calculate or problem solve. Machine learning algorithms instead allow for computers to train on data inputs and use statistical analysis in order to output values that fall within a specific range. Because of this, machine learning facilitates computers in building models from sample data in order to automate decision-making processes based on data inputs.
+
+Any technology user today has benefitted from machine learning. Facial recognition technology allows social media platforms to help users tag and share photos of friends. Optical character recognition (OCR) technology converts images of text into movable type. Recommendation engines, powered by machine learning, suggest what movies or television shows to watch next based on user preferences. Self-driving cars that rely on machine learning to navigate may soon be available to consumers.
+
+Machine learning is a continuously developing field. Because of this, there are some considerations to keep in mind as you work with machine learning methodologies, or analyze the impact of machine learning processes.\cite{12}
+
+
+
+
+\section{Time Series Forecast}
+  
+A time series is usually modelled through a stochastic process Y(t), i.e. a sequence of random variables. In a forecasting setting we find ourselves at time t and we are interested in estimating Y(t+h), using only information available at time t.\cite{13}
+Anything that is observed sequentially over time is a time series.
+When forecasting time series data, the aim is to estimate how the sequence of observations will continue into the future.
+Forecasting involves taking models fit on historical data and using them to predict future observations.
+
+Descriptive models can borrow for the future (i.e. to smooth or remove noise), they only seek to best describe the data.
+The skill of a time series forecasting model is determined by its performance at predicting the future. This is often at the expense of being able to explain why a specific prediction was made, confidence intervals and even better understanding the underlying causes behind the problem.
+
+\textbf{Components of Time Series} \\
+Time series analysis provides a body of techniques to better understand a dataset.
+
+Perhaps the most useful of these is the decomposition of a time series into 4 constituent parts:
+
+\begin{enumerate}
+  \item Level. The baseline value for the series if it were a straight line.
+  \item Trend. The optional and often linear increasing or decreasing behavior of the series over time.
+  \item Seasonality. The optional repeating patterns or cycles of behavior over time.
+  \item Noise. The optional variability in the observations that cannot be explained by the model.
+All time series have a level, most have noise, and the trend and seasonality are optional.
+
+\end{enumerate}
+
+
+\subsection{ARIMA}
+
+
+ARIMA, short for ‘Auto Regressive Integrated Moving Average’ is actually a class of models that ‘explains’ a given time series based on its own past values, that is, its own lags and the lagged forecast errors, so that equation can be used to forecast future values.\\
+
+An ARIMA model is characterized by 3 terms: p, d, q
+
+where,\\
+
+p is the order of the Auto Regression(AR) term\\
+
+q is the order of the Moving Average(MA) term\\
+
+d is the number of differencing required to make the time series stationary\\
+
+
+A pure Auto Regressive (AR only) model is one where Yt depends only on its own lags. That is, Yt is a function of the ‘lags of Yt’.\\
+
+Likewise a pure Moving Average (MA only) model is one where Yt depends only on the lagged forecast errors.\\
+
+
+
+
+
+
+
 
 
 \section{Summary}
@@ -408,7 +521,16 @@ Aimed at obtaining inherent laws of historical data series in pharmaceutical sal
 
 The results from the various models are to be verified using the mean square error estimator.(MSEE) The MSE is the average of the squared  differences in the values between the actual real outcome and the predicted outcome using our model. I use the MSE as a key performance indicator in order to judge if my model is performing better than those already in existance.
 
+This project was conducted through a framework for health forecasting. The key processes
+involved in developing a general health forecasting service, are illustrated below
 
+\begin{figure}[H]%[!ht]
+  \begin {center}
+  \includegraphics[width=0.95\textwidth]{images/FlowChart.png}
+  \caption{The framework considered while carrying out the project}
+  \label{fig:ecg}
+  \end {center}
+\end{figure}
 
 
 
@@ -438,17 +560,6 @@ The results from the various models are to be verified using the mean square err
 
 \chapter{Methodology}
 
-\section{Machine Learning}
-
-\subsection{Introduction}
-
-Machine learning is a subfield of artificial intelligence (AI). The goal of machine learning generally is to understand the structure of data and fit that data into models that can be understood and utilized by people.
-
-Although machine learning is a field within computer science, it differs from traditional computational approaches. In traditional computing, algorithms are sets of explicitly programmed instructions used by computers to calculate or problem solve. Machine learning algorithms instead allow for computers to train on data inputs and use statistical analysis in order to output values that fall within a specific range. Because of this, machine learning facilitates computers in building models from sample data in order to automate decision-making processes based on data inputs.
-
-Any technology user today has benefitted from machine learning. Facial recognition technology allows social media platforms to help users tag and share photos of friends. Optical character recognition (OCR) technology converts images of text into movable type. Recommendation engines, powered by machine learning, suggest what movies or television shows to watch next based on user preferences. Self-driving cars that rely on machine learning to navigate may soon be available to consumers.
-
-Machine learning is a continuously developing field. Because of this, there are some considerations to keep in mind as you work with machine learning methodologies, or analyze the impact of machine learning processes.\cite{12}
 
 
 \section{Materials and Methods}
@@ -463,17 +574,84 @@ From box-plots, Cotrimoxazole had more outliers than the rest of the drugs which
 
 \begin{figure}[H]%[!ht]
   \begin {center}
-  \includegraphics[width=0.55\textwidth]{images/download.png}
-  \caption{Box plots of the 5 selected drugs}
+  \includegraphics[width=0.85\textwidth]{images/downloadA.png}
+  \caption{Box plot of the Amoxyclin Caps drug}
   \label{fig:ecg}
   \end {center}
 \end{figure}
 
 \begin{figure}[H]%[!ht]
   \begin {center}
-  \includegraphics[width=0.75\textwidth]{images/download (10).png}
-  \includegraphics[width=0.75\textwidth]{images/download (12).png}
-  \caption{Illustration plot of the trend and rolling mean.}
+  \includegraphics[width=0.85\textwidth]{images/downloadB.png}
+  \caption{Box plot of Ampicloxa drug}
+  \label{fig:ecg}
+  \end {center}
+\end{figure}
+
+\begin{figure}[H]%[!ht]
+  \begin {center}
+  \includegraphics[width=0.85\textwidth]{images/downloadC.png}
+  \caption{Box plot of Ceftriaxone Injections}
+  \label{fig:ecg}
+  \end {center}
+\end{figure}
+
+
+\begin{figure}[H]%[!ht]
+  \begin {center}
+  \includegraphics[width=0.85\textwidth]{images/downloadD.png}
+  \caption{Box plot of Ciprofloxacin drug}
+  \label{fig:ecg}
+  \end {center}
+\end{figure}
+
+\begin{figure}[H]%[!ht]
+  \begin {center}
+  \includegraphics[width=0.85\textwidth]{images/downloadE.png}
+  \caption{Box plot of Cotrimoxazole drug}
+  \label{fig:ecg}
+  \end {center}
+\end{figure}
+
+
+
+\begin{figure}[H]%[!ht]
+  \begin {center}
+  \includegraphics[width=0.95\textwidth]{images/download (10)A.png}
+  \caption{Illustration plot of the trend and rolling mean for Amoxyclin Caps.}
+  \label{fig:ecg}
+  \end {center}
+\end{figure}
+
+
+\begin{figure}[H]%[!ht]
+  \begin {center}
+  \includegraphics[width=0.95\textwidth]{images/download (10)B.png}
+  \caption{Illustration plot of the trend and rolling mean for Ceftriaxone Injections.}
+  \label{fig:ecg}
+  \end {center}
+\end{figure}
+
+\begin{figure}[H]%[!ht]
+  \begin {center}
+  \includegraphics[width=0.95\textwidth]{images/download (10)C.png}
+  \caption{Illustration plot of the trend and rolling mean for Cotrimoxazole drugs.}
+  \label{fig:ecg}
+  \end {center}
+\end{figure}
+
+\begin{figure}[H]%[!ht]
+  \begin {center}
+  \includegraphics[width=0.95\textwidth]{images/download (12)A.png}
+  \caption{Illustration plot of the trend and rolling mean for Ampicloxa drugs.}
+  \label{fig:ecg}
+  \end {center}
+\end{figure}
+
+\begin{figure}[H]%[!ht]
+  \begin {center}
+  \includegraphics[width=0.95\textwidth]{images/download (12)B.png}
+  \caption{Illustration plot of the trend and rolling mean for Ampicloxa drugs.}
   \label{fig:ecg}
   \end {center}
 \end{figure}
@@ -495,29 +673,6 @@ Included Components\\
   \item Graphical Processing Unit(GPU):A processing unit for computationally intense algorithms.
 \end{enumerate}
 
-\section{Time Series Forecast}
-  
-A time series is usually modelled through a stochastic process Y(t), i.e. a sequence of random variables. In a forecasting setting we find ourselves at time t and we are interested in estimating Y(t+h), using only information available at time t.\cite{13}
-Anything that is observed sequentially over time is a time series.
-When forecasting time series data, the aim is to estimate how the sequence of observations will continue into the future.
-Forecasting involves taking models fit on historical data and using them to predict future observations.
-
-Descriptive models can borrow for the future (i.e. to smooth or remove noise), they only seek to best describe the data.
-The skill of a time series forecasting model is determined by its performance at predicting the future. This is often at the expense of being able to explain why a specific prediction was made, confidence intervals and even better understanding the underlying causes behind the problem.
-
-\textbf{Components of Time Series} \\
-Time series analysis provides a body of techniques to better understand a dataset.
-
-Perhaps the most useful of these is the decomposition of a time series into 4 constituent parts:
-
-\begin{enumerate}
-  \item Level. The baseline value for the series if it were a straight line.
-  \item Trend. The optional and often linear increasing or decreasing behavior of the series over time.
-  \item Seasonality. The optional repeating patterns or cycles of behavior over time.
-  \item Noise. The optional variability in the observations that cannot be explained by the model.
-All time series have a level, most have noise, and the trend and seasonality are optional.
-
-\end{enumerate}
 
 \section{Data and Results}
 
@@ -538,23 +693,6 @@ With our time day shift results , we modelled a naive forecasting scenario and w
 % Add other chapters and their (sub)(sub)sections as appropriate
 
 \subsection{ARIMA  method}
-
-ARIMA, short for ‘Auto Regressive Integrated Moving Average’ is actually a class of models that ‘explains’ a given time series based on its own past values, that is, its own lags and the lagged forecast errors, so that equation can be used to forecast future values.\\
-
-An ARIMA model is characterized by 3 terms: p, d, q
-
-where,\\
-
-p is the order of the Auto Regression(AR) term\\
-
-q is the order of the Moving Average(MA) term\\
-
-d is the number of differencing required to make the time series stationary\\
-
-
-A pure Auto Regressive (AR only) model is one where Yt depends only on its own lags. That is, Yt is a function of the ‘lags of Yt’.\\
-
-Likewise a pure Moving Average (MA only) model is one where Yt depends only on the lagged forecast errors.\\
 
 
  First, method arma\_order\_select\_ic was used to determine initial p and q parameters. The method computes Akaike’s Information Criterion (AIC) for many ARIMA models and chooses the best configuration. However, AIC is not used to score accuracy of the forecasting methods in this research. Mean squared error is used instead. For that, reason, grid search optimization method was applied, where different combinations of the hyper-parameters were used to calculate MSE and then, the combination producing the least MSE was chosen as optimal. Grid search optimization for rolling forecast produced the following best combinations of the hyper-parameters:
