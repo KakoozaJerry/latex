@@ -290,7 +290,10 @@ To obtain inherent laws from vast amounts of pharmaceutical sales data and to pr
   MSE & Mean Square Error\\
   KPI & Key Performance Indicator\\
   API & Application Programming Interface\\
-  GPU & Graphical Processing Unit
+  GPU & Graphical Processing Unit\\
+  BPTT & Back Propagation Through Time\\
+  RNN & Recurrent Neural Networks\\
+  CNN & Convolutional Neural Network
 
 \end{tabular}
 
@@ -676,7 +679,87 @@ Long-term forecasting validation has been done with three LSTM configurations: V
 \subsubsection{Recurrent Neural Networks}
 Humans don’t start their thinking from scratch every second. As you read this essay, you understand each word based on your understanding of previous words. You don’t throw everything away and start thinking from scratch again. Your thoughts have persistence.
 
-Traditional neural networks can’t do this, and it seems like a major shortcoming. For example, imagine you want to classify what kind of event is happening at every point in a movie. It’s unclear how a traditional neural network could use its reasoning about previous events in the film to inform later ones.
+Traditional neural networks can’t do this, and it seems like a major shortcoming. For example, imagine you want to classify what kind of event is happening at every point in a movie. It’s unclear how a traditional neural network could use its reasoning about previous events in the film to inform later ones. \cite{16}
+
+Recurrent neural networks (RNN) are a class of neural networks that are helpful in modeling sequence data. Derived from feedforward networks, RNNs exhibit similar behavior to how human brains function. Simply put: recurrent neural networks produce predictive results in sequential data that other algorithms can’t.
+RNN’s and feed-forward neural networks get their names from the way they channel information.
+
+In a feed-forward neural network, the information only moves in one direction — from the input layer, through the hidden layers, to the output layer. The information moves straight through the network and never touches a node twice.
+
+Feed-forward neural networks have no memory of the input they receive and are bad at predicting what’s coming next. Because a feed-forward network only considers the current input, it has no notion of order in time. It simply can’t remember anything about what happened in the past except its training.
+
+A recurrent neural network, however, is able to remember those characters because of its internal memory. It produces output, copies that output and loops it back into the network.
+
+Simply put: recurrent neural networks add the immediate past to the present.
+
+\begin{figure}[H]%[!ht]
+  \begin {center}
+  \includegraphics[width=0.95\textwidth]{images/Rnn.png}
+  \caption{Feed forward RNN}
+  \label{fig:ecg}
+  \end {center}
+\end{figure}
+
+
+A feed-forward neural network assigns, like all other deep learning algorithms, a weight matrix to its inputs and then produces the output. Note that RNNs apply weights to the current and also to the previous input. Furthermore, a recurrent neural network will also tweak the weights for both through gradient descent and backpropagation through time (BPTT). 
+
+\subsubsection{Back Propagation through time(BPTT)}
+
+In neural networks, you basically do forward-propagation to get the output of your model and check if this output is correct or incorrect, to get the error. Backpropagation is nothing but going backwards through your neural network to find the partial derivatives of the error with respect to the weights, which enables you to subtract this value from the weights.
+
+Those derivatives are then used by gradient descent, an algorithm that can iteratively minimize a given function. Then it adjusts the weights up or down, depending on which decreases the error. That is exactly how a neural network learns during the training process.
+
+The image below illustrates the concept of forward propagation and backpropagation in a feed-forward neural network:
+
+\begin{figure}[H]%[!ht]
+  \begin {center}
+  \includegraphics[width=0.95\textwidth]{images/bptt.png}
+  \caption{Back Propagation Through time feed forward RNN}
+  \label{fig:ecg}
+  \end {center}
+\end{figure}
+
+
+\subsubsection{LSTM Networks}
+
+Long Short Term Memory networks  usually just called LSTMs  are a special kind of RNN, capable of learning long term dependencies.
+
+They were introduced by Hochreiter and Schmidhuber (1997), and were refined and popularized by many people in following work.
+
+1.They work tremendously well on a large variety of problems, and are now widely used.
+
+LSTMs are explicitly designed to avoid the long-term dependency problem. Remembering information for long periods of time is practically their default behavior, not something they struggle to learn.
+
+All recurrent neural networks have the form of a chain of repeating modules of neural network. In standard RNNs, this repeating module will have a very simple structure, such as a single tanh layer.
+
+\subsubsection{Architecture of LSTMs}
+The functioning of LSTM can be visualized by understanding the functioning of a news channel’s team covering a murder story. Now, a news story is built around facts, evidence and statements of many people. Whenever a new event occurs you take either of the three steps.
+
+Let’s say, we were assuming that the murder was done by ‘poisoning’ the victim, but the autopsy report that just came in said that the cause of death was ‘an impact on the head’. Being a part of this news team what do you do? You immediately forget the previous cause of death and all stories that were woven around this fact.
+
+What, if an entirely new suspect is introduced into the picture. A person who had grudges with the victim and could be the murderer? You input this information into your news feed, right?
+
+Now all these broken pieces of information cannot be served on mainstream media. So, after a certain time interval, you need to summarize this information and output the relevant things to your audience. Maybe in the form of “XYZ turns out to be the prime suspect.”.\cite{17}
+
+A typical LSTM network is comprised of different memory blocks called cells
+(the rectangles that we see in the image).  There are two states that are being transferred to the next cell; the cell state and the hidden state. The memory blocks are responsible for remembering things and manipulations to this memory is done through three major mechanisms, called gates. Each of them is being discussed below.
+
+\subsubsection{Vanilla LSTM}
+A Vanilla LSTM is an LSTM model that has a single hidden layer of LSTM units, and an output layer used to make a prediction. \cite{18}
+
+\subsubsection{Stacked LSTM}
+
+A Stacked LSTM architecture can be defined as an LSTM model comprised of multiple LSTM layers. An LSTM layer above provides a sequence output rather than a single value output to the LSTM layer below. Specifically, one output per input time step, rather than one output time step for all input time steps.
+
+\subsubsection{Bidirectional LSTM}
+In bidirectional RNNs, future states can also influence the present state and the past states by allowing information to flow backward. Past outputs are updated as needed depending on the new information received.
+
+\subsection{Website Application Programming Interface(API)}
+An application programming interface (API) is a computing interface that defines interactions between multiple software intermediaries. 
+
+\subsubsection{StreamLit API}
+Streamlit is an open-source app framework for Machine Learning and Data Science teams. Create beautiful data apps .\cite{19}
+It is a pyhthon framework and works with Python version 3.6 - 3.8 .
 
 \section{Summary}
 % End your chapter with a short summary.
@@ -863,10 +946,24 @@ Amoxyclin\_caps – Best ARIMA(1,0,0) MSE=1524.745
 
 
 \subsection{Forecasting with LSTM methods}
-Number of past observations tested in input sequences was 5.
+My number of past observations tested in input sequences was 5.
+
+I used the library Keras, which is a high-level API for neural networks and works on top of TensorFlow.
+
+I imported the required dependencies as shown in the figure below.
+
+
+\begin{figure}[H]%[!ht]
+  \begin {center}
+  \includegraphics[width=0.95\textwidth]{images/Dependencies.PNG}
+  \caption{Installing the environment Variables.}
+  \label{fig:ecg}
+  \end {center}
+\end{figure}
+
 
 \subsubsection{Vanilla LSTM}
-This is where we have one hidden layer within the neural network.
+
 In order to get reproducible results in forecasting with LSTM, following values are fixed: seed value, 'PYTHONHASHSEED' environment variable, Python's, numpy's and Tensorflow's built-in pseudo-random generators. A new global Tensorflow session is configured.Below are the results from the vanilla LSTM model.
 This model is unidirectional in the sense that the current output is only influenced by the past states and the current input.
 \begin{figure}[H]%[!ht]
@@ -899,7 +996,6 @@ This model is unidirectional in the sense that the current output is only influe
 
   \subsubsection{Stacked LSTM method}
 
-This is also a unidirectional model where we have more than one hidden layer within the neural network.
 \begin{figure}[H]%[!ht]
 \begin {center}
 \includegraphics[width=0.75\textwidth]{StackedLstm.png}
@@ -934,7 +1030,6 @@ This is also a unidirectional model where we have more than one hidden layer wit
 
 \subsubsection{Bidirectional LSTM}
 
-In bidirectional RNNs, future states can also influence the present state and the past states by allowing information to flow backward. Past outputs are updated as needed depending on the new information received.
 
 \begin{figure}[H]%[!ht]
 \begin {center}
@@ -1083,6 +1178,19 @@ Incorparating a multivariate model that makes use of various input data to forec
     \bibitem{15}
      
     Accessed on December 12th 2020 "https://towardsdatascience.com/arima-simplified-b63315f27cbc” \hskip 1em plus 0.5em minus 0.4em \relax 
+
+    \bibitem{16}
+     
+    Accessed on December 12th 2020 "https://colah.github.io/posts/2015-08-Understanding-LSTMs/” \hskip 1em plus 0.5em minus 0.4em \relax 
+
+    \bibitem{17}
+    Accessed on December 18th 2020, \emph{analyticsvidhya.com/blog/2017/12/fundamentals-of-deep-learning-introduction-to-lstm/}  \hskip 1em plus 0.5em minus 0.4em \relax 
+
+    \bibitem{18}
+    Accessed on December 18th 2020, \emph{https://machinelearningmastery.com/how-to-develop-lstm-models-for-time-series-forecasting/}  \hskip 1em plus 0.5em minus 0.4em \relax 
+
+    \bibitem{19}
+    Accessed on December 18th 2020, \emph{https://docs.streamlit.io/en/stable/}  \hskip 1em plus 0.5em minus 0.4em \relax 
 
     
 
