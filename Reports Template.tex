@@ -183,7 +183,7 @@ A Report submitted in partial fulfillment of the requirements for the \\ \textbf
 				
 %\beforeabstract %\input{abstract} 
 
-
+\pagenumbering{roman}
 
 \section*{Declaration}
 
@@ -194,8 +194,8 @@ I declare that this research was completed with support from Soteria Pharmacy in
 \emph{Academic Integrity Pledge:}
 
 \emph{
-  I HAVE ABIDED BY THE MAKERERE UNIVERSITY ACADEMIC INTEGRITY POLICY ON THIS
-ASSIGNMENT.
+  I have abided by the Makerere University academic integrity policy on this
+assignment.
 }
 I also confirm that this report is only prepared for my academic requirement, not for any other
 purpose.
@@ -296,13 +296,18 @@ To obtain inherent laws from vast amounts of pharmaceutical sales data and to pr
 
 
 \newpage
+\pagenumbering{arabic}
+
 
 \chapter{Introduction}
 This chapter gives a brief explanation of the project background, problem statement,
 justification, objectives, and a summary of the methodology.
 
 \section{Project Background}
+Soteria Pharmacy is a licensed Pharmacy outlet located in Luweero District and has been in operation for 4 years now. It is directly opposite the Luweero National referal hospital and close to the main road for quick access by the residents of the area.
+In March 2018, Kampala and Mbale had 1029 private pharmacies with valid operating licenses from Uganda’s MRA, of which 622 were retail (licensed to dispense small quantities to patients only), 175 were wholesale (licensed to sell in bulk to retailers only) and 232 were dual (licensed for both wholesale and retail supply).\cite{14}
 One of the responsibilities of pharmacies in  Uganda is to have a minimum stock of medicines.This ensures patients can have it when prescribed.
+The adoption of technological tools to help in inventory tracking by pharmacies has enabled us collect vast amounts of data but all this information has not been put to full use as it only presents reports for past occurances.
 
 In addition, pharmacies need to get a good forecast of the medication needs due to the short term validity of many medicines and the need to control stock levels.This avoids excessive costs and loss of customers due to stock outages.\\
 
@@ -314,6 +319,11 @@ To specific case of pharmacies in Uganda, the problem is of particular importanc
 
 During our research study of Soteria Pharmacy procurement process with an interview of Ms.Brenda the incharge of this, we realised she uses personal judgement of current stock levels athand and the rate at which people come in to ask for a ceratin drug then determine how much more stock should be purchased.Given her difficulties in accurately predicting the future sales,this report explores the product sales forecast at the indiviual level of this Pharmacy.I made a forecast for 5 sold drugs.The forecast was based on analysis of  historical data for a period of 24 months and future results analyses of 50 days determined.ARIMA and LSTM methods were used in the sales forecast of which the best model was recommended including a conclusive way of improving our results.
 
+
+People act on the basis of forecasting models whether they are on paper or in their heads. One is better off quantifying these estimations so as to discuss them rationally as opposed to making them based on intuition. For pharmaceutical distribution companies, it is essential to get good estimates of drugs, due to the short shelf life of many medicines and the need to control stock levels, to avoid excessive inventory costs while guaranteeing customer demand satisfaction, and thus decreasing the possibility of a loss of customers due to stock outages.
+Stock management, transportations, and financial spends contain a high percentage of total pharmaceutical companies’ expenses. As a rule, companies pay immediately when buy medications from manufacturers, and then sales compensate these spend gradually. This gap is a danger of unplanned expenses to occur. Therefore, the majority of distributors in this industry look for modern and precise forecasting methods of future sales to decrease purchase and storage costs and to increase profit by meeting clients’ needs timely.
+Common existing forecasting methods are ineffective for pharmaceutical companies because these methods require a large dataset of each medication sales. In its turn, medications are constantly replaced by analogs or refreshed to enhance pharmacological effects or reduce collateral effects.
+\\
 
 
 
@@ -414,10 +424,6 @@ This report has 3 chapters.
 \section{Introduction}
 
 % Start with an introduction
-People act on the basis of forecasting models whether they are on paper or in their heads. One is better off quantifying these estimations so as to discuss them rationally as opposed to making them based on intuition. For pharmaceutical distribution companies, it is essential to get good estimates of drugs, due to the short shelf life of many medicines and the need to control stock levels, to avoid excessive inventory costs while guaranteeing customer demand satisfaction, and thus decreasing the possibility of a loss of customers due to stock outages.
-Stock management, transportations, and financial spends contain a high percentage of total pharmaceutical companies’ expenses. As a rule, companies pay immediately when buy medications from manufacturers, and then sales compensate these spend gradually. This gap is a danger of unplanned expenses to occur. Therefore, the majority of distributors in this industry look for modern and precise forecasting methods of future sales to decrease purchase and storage costs and to increase profit by meeting clients’ needs timely.
-Common existing forecasting methods are ineffective for pharmaceutical companies because these methods require a large dataset of each medication sales. In its turn, medications are constantly replaced by analogs or refreshed to enhance pharmacological effects or reduce collateral effects.
-\\
 
 
 
@@ -463,8 +469,21 @@ Machine learning is a continuously developing field. Because of this, there are 
 
 
 
-\section{Time Series Forecast}
-  
+\section{Time Series Forecasting}
+
+\subsection{Introduction}
+A time series is a sequence where a metric is recorded over regular time intervals.
+Depending on the frequency, a time series can be of yearly (ex: annual budget), quarterly (ex: expenses), monthly (ex: air traffic), weekly (ex: sales qty), daily (ex: weather), hourly (ex: stocks price), minutes (ex: inbound calls in a call canter) and even seconds wise (ex: web traffic).
+
+Forecasting is the next step where you want to predict the future values the series is going to take.
+
+Now forecasting a time series can be broadly divided into two types.\\
+
+If you use only the previous values of the time series to predict its future values, it is called Univariate Time Series Forecasting.\\
+
+And if you use predictors other than the series (a.k.a exogenous variables) to forecast it is called Multi Variate Time Series Forecasting
+
+
 A time series is usually modelled through a stochastic process Y(t), i.e. a sequence of random variables. In a forecasting setting we find ourselves at time t and we are interested in estimating Y(t+h), using only information available at time t.\cite{13}
 Anything that is observed sequentially over time is a time series.
 When forecasting time series data, the aim is to estimate how the sequence of observations will continue into the future.
@@ -508,13 +527,156 @@ A pure Auto Regressive (AR only) model is one where Yt depends only on its own l
 
 Likewise a pure Moving Average (MA only) model is one where Yt depends only on the lagged forecast errors.\\
 
+ARIMA, short for ‘AutoRegressive Integrated Moving Average’, is a forecasting algorithm based on the idea that the information in the past values of the time series can alone be used to predict the future values.
+Autoregressive models often make sense for business data. They express the fact that where you go depends partly on where you are and partly on what happens to you along the way (as expressed by the random noise component).Forecasting with an autoregressive process is done with predicted values from the estimated regression equation after going forward one unit in time.
+
+\subsubsection{Correlation and Lag Factor}
+Let’s consider an example of predicting the price of gas at any particular day, say Sunday. It’s obvious and easy to think of, that Sunday’s price will be dependent on Saturday’s price.
+Now let’s consider the effect of Friday’s price on Sunday’s price.
+
+\begin{figure}[H]%[!ht]
+  \begin {center}
+  \includegraphics[width=0.95\textwidth]{images/prices.png}
+  
+  \label{fig:ecg}
+  \end {center}
+\end{figure}
+
+As Sunday’s price is dependent on Saturday’s (2), which in-turn is dependent on Friday’s (1), there could be an indirect transitive relation between price on Friday and price on Sunday.
+Aforementioned relations are visualised in the diagram below.
+
+\begin{figure}[H]%[!ht]
+  \begin {center}
+  \includegraphics[width=0.95\textwidth]{images/prices_chart.png}
+  \caption{AutoCorrelation}
+  \label{fig:ecg}
+  \end {center}
+\end{figure}
+
+Apart from these, there exists one more relation which might be difficult to imagine at first i.e. the direct effect of Friday’s price on Sunday’s price (3).
+This mutual relationship between day prices here, is called correlation. If values of two variables increase (or decrease) together then they are said to have a positive correlation. If the value of one variable increases and the other decreases (or vice versa) then they have a negative correlation.
+
+Correlation is an important concept of time series and it has 2 flavours,\\
+Auto-correlation, which considers both direct and indirect effects (illustrated in the diagram above) and,\\
+Partial Auto-correlation, which considers only the direct effects like in the figure below
+
+\begin{figure}[H]%[!ht]
+  \begin {center}
+  \includegraphics[width=0.95\textwidth]{images/partial_c.png}
+  \caption{Partial Correlation}
+  \label{fig:ecg}
+  \end {center}
+\end{figure}
+
+\subsubsection{Lag Factor}
+As we have considered the effect on Sunday’s price based on the price 2 days prior(i.e. Friday)… the lag factor here is 2.
+
+\begin{figure}[H]%[!ht]
+  \begin {center}
+  \includegraphics[width=0.95\textwidth]{images/Lag_F.png}
+  \caption{Lag Factor Concept}
+  \label{fig:ecg}
+  \end {center}
+\end{figure}
+
+Auto-correlation and Partial Auto-correlation are important to understand before moving on to ARIMA as they are crucial for selecting the right parameters for your model. 
+
+\subsubsection{AutoRegression(AR)}
+Auto Regressive (AR) model is a specific type of regression model where, the dependent variable depends on past values of itself.
+This necessarily means that the current values are correlated with values in the previous time-steps. And more specifically, the type of correlation here is partial auto-correlation.
+The equation for the AR model is shown below
+
+\begin{figure}[H]%[!ht]
+  \begin {center}
+  \includegraphics[width=0.95\textwidth]{images/AR_E.png}
+  \caption{AR equation}
+  \label{fig:ecg}
+  \end {center}
+\end{figure}
+
+The respective weights of the corresponding lagged observations are decided by the correlation between… that lagged observation and the current observation. If the correlation is more, the weight corresponding to that lagged observation is high (and vice-versa).
+
+Notice the (p) in the equation…
+
+This (p) is called the lag order. It represents the number of prior lag observations we include in the model i.e. the number of lags which have a significant correlation with the current observation.
+
+\subsubsection{Moving Average (MA)}
+Moving Average (MA) model works by analysing how wrong you were in predicting values for the previous time-periods to make a better estimate for the current time-period.
+
+Basically, this model factors in errors from the lagged observations. The effects of these previous(lagged) observation errors, on the current observation, depends on the auto-correlation between them. This is similar in sense as the AR model which considers the partial auto-correlations.
+
+\begin{figure}[H]%[!ht]
+  \begin {center}
+  \includegraphics[width=0.95\textwidth]{images/MA_.png}
+  \caption{MA equation}
+  \label{fig:ecg}
+  \end {center}
+\end{figure}
+
+The epsilon terms represent the errors observed at respective lags and the weights are calculated statistically depending on the correlations.
+Notice the (q) in the equation…
+(q) represents the size of the moving window i.e. the number of lag observation errors which have a significant impact on the current observation. Its similar to the lag order(p), but it considers errors instead of the observations themselves.
+
+MA model supplements the AR model by taking into considerations, the errors from the previous time-periods thereby helping to get a better estimate.
+When we combine the AR and MA equation we get
+
+\begin{figure}[H]%[!ht]
+  \begin {center}
+  \includegraphics[width=0.95\textwidth]{images/CombinedE.png}
+  \caption{Combined Equation}
+  \label{fig:ecg}
+  \end {center}
+\end{figure}
+
+\subsubsection{Stationary}
+The models we’ve discussed so far (AR and MA) assume that the series is stationary. This is also means that “stationarity” is a necessary condition to take advantage of these models for any time series.
+
+Basically, for a time series to be stationary, it should satisfy the following 3 conditions…\\
+
+Mean  is constant\\
+Standard Deviation  is constant\\
+Seasonality doesn’t exist\\
 
 
+In most cases, these conditions can be visually analysed by studying the plot against time.\\
+
+You will came across a lot of series which are clearly not stationary.\\
+Does this mean that forecasting cannot be applied in these cases ?\\
+Well…this is where the sub-acronym I comes in…
 
 
+\subsubsection{Integration}
+Lets say, for example, you come across a series with a “non-constant” mean. Its clearly observable that the mean increases over time i.e. the series is not stationary.\\
+
+If we could somehow eliminate this upward trend we’ll be good to go.\\
+One way to do this is to consider the differences between consecutive timesteps. This is equivalent to performing a transformation of the form…
 
 
+\begin{figure}[H]%[!ht]
+  \begin {center}
+  \includegraphics[width=0.95\textwidth]{images/Transf.png}
+  \caption{Transformation}
+  \label{fig:ecg}
+  \end {center}
+\end{figure}
 
+Applying this transformation we get the following trend with an observable constant mean. The standard deviation is constant as well and seasonality doesn’t exist i.e. the series is now stationary.
+
+I stands for Integrated (though it has nothing to do with integration). It just means that, instead of predicting the time series itself we will predict the differences of the series from one time step to the next time step.
+Notice that here we have taken the first order difference i.e. a single phase of differencing of consecutive terms. This is could done multiple times to make the series stationary.\cite{15}
+
+
+\subsection{Forecasting with LSTM methods}
+Long Short-Term Memory (LSTM) networks are a type of recurrent neural network capable of learning order dependence in sequence prediction problems.\\
+Recurrent neural networks are different from traditional feed-forward neural networks.
+
+This difference in the addition of complexity comes with the promise of new behaviors that the traditional methods cannot achieve.\\
+Long-term forecasting validation has been done with three LSTM configurations: Vanilla LSTM, Stacked LSTM and Bi-directional LSTM. Relu activation function was used, optimizer was Adam and loss function was Mean Squared Error. The best results were achieved with training the model in 400 epochs. Before fitting, all data was standardized (rescaled in interval -1,1) and transformed to data for supervised problem.
+
+\subsubsection{Recurrent Neural Networks}
+Humans don’t start their thinking from scratch every second. As you read this essay, you understand each word based on your understanding of previous words. You don’t throw everything away and start thinking from scratch again. Your thoughts have persistence.
+
+Traditional neural networks can’t do this, and it seems like a major shortcoming. For example, imagine you want to classify what kind of event is happening at every point in a movie. It’s unclear how a traditional neural network could use its reasoning about previous events in the film to inform later ones.
 
 \section{Summary}
 % End your chapter with a short summary.
@@ -701,11 +863,6 @@ Amoxyclin\_caps – Best ARIMA(1,0,0) MSE=1524.745
 
 
 \subsection{Forecasting with LSTM methods}
-Long Short-Term Memory (LSTM) networks are a type of recurrent neural network capable of learning order dependence in sequence prediction problems.\\
-Recurrent neural networks are different from traditional feed-forward neural networks.
-
-This difference in the addition of complexity comes with the promise of new behaviors that the traditional methods cannot achieve.\\
-Long-term forecasting validation has been done with three LSTM configurations: Vanilla LSTM, Stacked LSTM and Bi-directional LSTM. Relu activation function was used, optimizer was Adam and loss function was Mean Squared Error. The best results were achieved with training the model in 400 epochs. Before fitting, all data was standardized (rescaled in interval -1,1) and transformed to data for supervised problem.
 Number of past observations tested in input sequences was 5.
 
 \subsubsection{Vanilla LSTM}
@@ -919,6 +1076,13 @@ Incorparating a multivariate model that makes use of various input data to forec
      
     Davide ~Burba"An overview of time series forecasting models” \emph{https://towardsdatascience.com/an-overview-of-time-series-forecasting-models-a2fa7a358fcb}  \hskip 1em plus 0.5em minus 0.4em \relax 
 
+    \bibitem{14}
+     
+    "National Drug Authority. NDA licensed outlets as at 12th March, 2018. Kampala: National Drug Authority; 2018.” \hskip 1em plus 0.5em minus 0.4em \relax 
+
+    \bibitem{15}
+     
+    Accessed on December 12th 2020 "https://towardsdatascience.com/arima-simplified-b63315f27cbc” \hskip 1em plus 0.5em minus 0.4em \relax 
 
     
 
