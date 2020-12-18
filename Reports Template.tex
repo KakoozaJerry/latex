@@ -929,8 +929,40 @@ With our time day shift results , we modelled a naive forecasting scenario and w
 
 \begin{figure}[H]%[!ht]
   \begin {center}
-  \includegraphics[width=0.75\textwidth]{images/download (13).png}
-  \caption{Illustration plot of the naïve forecasting results.}
+  \includegraphics[width=0.75\textwidth]{images/download (13)A.png}
+  \caption{Illustration plot of the Amoxycilin naïve forecasting results.}
+  \label{fig:ecg}
+  \end {center}
+\end{figure}
+
+\begin{figure}[H]%[!ht]
+  \begin {center}
+  \includegraphics[width=0.75\textwidth]{images/download (13)B.png}
+  \caption{Illustration plot of the Ceftriaxone naïve forecasting results.}
+  \label{fig:ecg}
+  \end {center}
+\end{figure}
+
+\begin{figure}[H]%[!ht]
+  \begin {center}
+  \includegraphics[width=0.75\textwidth]{images/download (13)C.png}
+  \caption{Illustration plot of the Cotrimoxazole naïve forecasting results.}
+  \label{fig:ecg}
+  \end {center}
+\end{figure}
+
+\begin{figure}[H]%[!ht]
+  \begin {center}
+  \includegraphics[width=0.75\textwidth]{images/download (14)A.png}
+  \caption{Illustration plot of the Ampicloxa naïve forecasting results.}
+  \label{fig:ecg}
+  \end {center}
+\end{figure}
+
+\begin{figure}[H]%[!ht]
+  \begin {center}
+  \includegraphics[width=0.75\textwidth]{images/download (14)B.png}
+  \caption{Illustration plot of the Ciprofloxacin naïve forecasting results.}
   \label{fig:ecg}
   \end {center}
 \end{figure}
@@ -982,16 +1014,48 @@ This model is unidirectional in the sense that the current output is only influe
   \end {center}
 \end{figure}
   
+  
   \begin{figure}[H]%[!ht]
-  \begin {center}
-  \includegraphics[width=0.75\textwidth]{images/vanilla1 (2).png}
-  \includegraphics[width=0.75\textwidth]{images/vanilla1 (4).png}
-  \caption{Vanilla LSTM model results.}
-  \label{fig:ecg}
-  \end {center}
+    \begin {center}
+    \includegraphics[width=0.75\textwidth]{images/vanilla1 (2)A.png}
+    \caption{Vanilla LSTM model results for Amoxycilin Caps.}
+    \label{fig:ecg}
+    \end {center}
   \end{figure}
-  
-  
+ 
+  \begin{figure}[H]%[!ht]
+    \begin {center}
+    \includegraphics[width=0.75\textwidth]{images/vanilla1 (2)B.png}
+    \caption{Vanilla LSTM model results for Ceftriaxone Injections.}
+    \label{fig:ecg}
+    \end {center}
+  \end{figure}
+ 
+  \begin{figure}[H]%[!ht]
+    \begin {center}
+    \includegraphics[width=0.75\textwidth]{images/vanilla1 (2)C.png}
+    \caption{Vanilla LSTM model results for Cotrimoxazole Tabs.}
+    \label{fig:ecg}
+    \end {center}
+  \end{figure}
+
+  \begin{figure}[H]%[!ht]
+    \begin {center}
+    \includegraphics[width=0.75\textwidth]{images/vanilla1 (4)A.png}
+    \caption{Vanilla LSTM model results for Ampicloxa Tabs.}
+    \label{fig:ecg}
+    \end {center}
+  \end{figure}
+
+  \begin{figure}[H]%[!ht]
+    \begin {center}
+    \includegraphics[width=0.75\textwidth]{images/vanilla1 (4)B.png}
+    \caption{Vanilla LSTM model results for Ampicloxa Tabs.}
+    \label{fig:ecg}
+    \end {center}
+  \end{figure}
+ 
+ 
  
 
   \subsubsection{Stacked LSTM method}
@@ -1058,6 +1122,9 @@ This model is unidirectional in the sense that the current output is only influe
 
 \section{Web API}
 I then built a web API that can be used by pharmacy managers using the streamlit python framework. One is able to select one of the various machine learning models in a drop down selection menu as shown below.
+When you select the model to run , Sales data is loaded from an excel sheet and converted into the pandas data structure .This is then run and trained with the model. Results of the model are saved and used to provide an output which is the actual forecast of the model. 
+
+
 \begin{figure}[H]%[!ht]
   \begin {center}
   \includegraphics[width=1\textwidth]{images/WebApp.PNG}
@@ -1070,6 +1137,9 @@ I then built a web API that can be used by pharmacy managers using the streamlit
 
 % Usually, start with a table of parameters similar to the one below, if this applies to your project.
 Figure 4.1 shows that all the methods used have a less MSE than the currently used Naive forecasting methods.\\
+The results from running my data with all the models are shown below.
+
+
 \begin{figure}[H]%[!ht]
 \begin {center}
 \includegraphics[width=1\textwidth]{images/chart.png}
@@ -1084,14 +1154,22 @@ However with more data of about 5 years or more, better results can be obtained 
 % End with a conclusion chapter
 \chapter{Conclusions and Future Works}
 %\label{chap:conclusion}
+This chapter contains concluding remarks of the project, that is, the conclusions, challenges met and recommendations.
+
 
 \section{Conclusions}
 
 %Conclude here
 \subsection{Summary of findings}
-This shows that the ARIMA gives the lowest MSE compared to the rest of the models.
+From the work done in this project, it shows that the ARIMA model gives the lowest MSE compared to the rest of the models.
+Future sales were  forecast and viewed within a Website API by the pharmacy owners in order to make informed decissions.
+Data Collection was done using an inventory management system in place at Soteria Pharmacy.The various machine learning methods applied have been discussed in the report and implemented with the Mean square error as a performance metric to determine how they perform in accordance to the already existing method which is modeled as the Naive forecast in this project.
+
+
 \subsection{Limitations of Study}
 Among the shortcomings of our research are the reluctance of most pharmacies especially those able to provide us with the long time-span data to avail us with this information considering it is company sensitive and only known to a specific set of employees.
+Also the innavailability of weather data from open platform sources hence requiring us to purchase the precipitation data from the Uganda National Metrological Association(UNMA).
+It was also hard to quantize the promotional sales and factor them to have multivariate variables contribute to the input data of the Recurrent Neural Network.
 
 \subsection{Recommendations}
 We suggest that more data sets are used with a longer lifetime span of about 5 years worth data.We also suggest the incorporation of other secondary dependent features that affect the sales such as weather patterns, promotional sales, marketing elements in order to get more accurate results. 
