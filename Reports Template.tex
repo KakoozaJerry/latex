@@ -248,7 +248,7 @@ I , Kakooza Abraham Jerry , dedicate this to my parents who have been there for 
 \newpage
 
 \section*{Acknowledgments}
-I would like to thank God for enabling me to complete my Final Year Project successfully. I also extend my gratitude ti the ilabs at Mak Project for the opportunity to work with them which has given me a wealth of skills and experience to build my engineering career.\\
+I would like to thank God for enabling me to complete my Final Year Project successfully. I also extend my gratitude to the ilabs at Mak Project for the opportunity to work with them which has given me a wealth of skills and experience to build my engineering career.\\
 
 I highly acknowledge my main supervisor Dr. Andrew Katumba and my co-supervisor Prof. Peter Lating for the support, guidance and knowledge provided at each step of this project.\\
 I highly acknowledge my mentors David Tusubira and Tibabwetiza Joel for the guidance and support.
@@ -323,8 +323,8 @@ To specific case of pharmacies in Uganda, the problem is of particular importanc
 During our research study of Soteria Pharmacy procurement process with an interview of Ms.Brenda the incharge of this, we realised she uses personal judgement of current stock levels athand and the rate at which people come in to ask for a ceratin drug then determine how much more stock should be purchased.Given her difficulties in accurately predicting the future sales,this report explores the product sales forecast at the indiviual level of this Pharmacy.I made a forecast for 5 sold drugs.The forecast was based on analysis of  historical data for a period of 24 months and future results analyses of 50 days determined.ARIMA and LSTM methods were used in the sales forecast of which the best model was recommended including a conclusive way of improving our results.
 
 
-People act on the basis of forecasting models whether they are on paper or in their heads. One is better off quantifying these estimations so as to discuss them rationally as opposed to making them based on intuition. For pharmaceutical distribution companies, it is essential to get good estimates of drugs, due to the short shelf life of many medicines and the need to control stock levels, to avoid excessive inventory costs while guaranteeing customer demand satisfaction, and thus decreasing the possibility of a loss of customers due to stock outages.
-Stock management, transportations, and financial spends contain a high percentage of total pharmaceutical companies’ expenses. As a rule, companies pay immediately when buy medications from manufacturers, and then sales compensate these spend gradually. This gap is a danger of unplanned expenses to occur. Therefore, the majority of distributors in this industry look for modern and precise forecasting methods of future sales to decrease purchase and storage costs and to increase profit by meeting clients’ needs timely.
+. For pharmaceutical distribution companies, it is essential to get good estimates of drugs, due to the short shelf life of many medicines and the need to control stock levels, to avoid excessive inventory costs while guaranteeing customer demand satisfaction, and thus decreasing the possibility of a loss of customers due to stock outages.
+Stock management, transportations, and financial spends contain a high percentage of total pharmaceutical companies’ expenses. As a rule, companies pay immediately when buying medications from manufacturers, and then sales compensate these spend gradually. This gap is a danger of unplanned expenses to occur. Therefore, the majority of distributors in this industry look for modern and precise forecasting methods of future sales to decrease purchase and storage costs and to increase profit by meeting clients’ needs timely.
 Common existing forecasting methods are ineffective for pharmaceutical companies because these methods require a large dataset of each medication sales. In its turn, medications are constantly replaced by analogs or refreshed to enhance pharmacological effects or reduce collateral effects.
 \\
 
@@ -448,14 +448,14 @@ In the deep learning world, state-of-the-art performance has gained a good reput
 physiological effect modeling \cite{7}, and many others. More recently papers on time-series prediction or classification with deep neural networks have been reported. \cite{8,9,10,11}
 Aimed at obtaining inherent laws of historical data series in pharmaceutical sales, and forecasting the demand, controlling the inventory, reducing the costs, and improving the service level, this paper designs research on the data records from a pharmacy and presents different forecasting algorithms. The testing results provide support for the fact that these algorithms greatly improve the forecast accuracy from the naive forecasting method.
 
-\section{Data Collection}
+\section{Data Mining and Data Collection}
 
 Data mining is the search of relationships, patterns, or models that are implied on data stored
 in large databases. It can be seen as the process of exploiting large amounts of data for the
 purpose of identification of consistent standards, such as rules of association or time sequences
 to detect systematic relationships between variables. Uses algorithms to discover rules, identify
 factors and key trends, discover hidden patterns and relationships in large databases; this
-information after being interpreted, is used to support decision making organizational.
+information after being interpreted, is used to support decision making.
 
 \section{Machine Learning}
 
@@ -530,7 +530,6 @@ A pure Auto Regressive (AR only) model is one where Yt depends only on its own l
 
 Likewise a pure Moving Average (MA only) model is one where Yt depends only on the lagged forecast errors.\\
 
-ARIMA, short for ‘AutoRegressive Integrated Moving Average’, is a forecasting algorithm based on the idea that the information in the past values of the time series can alone be used to predict the future values.
 Autoregressive models often make sense for business data. They express the fact that where you go depends partly on where you are and partly on what happens to you along the way (as expressed by the random noise component).Forecasting with an autoregressive process is done with predicted values from the estimated regression equation after going forward one unit in time.
 
 \subsubsection{Correlation and Lag Factor}
@@ -674,7 +673,7 @@ Long Short-Term Memory (LSTM) networks are a type of recurrent neural network ca
 Recurrent neural networks are different from traditional feed-forward neural networks.
 
 This difference in the addition of complexity comes with the promise of new behaviors that the traditional methods cannot achieve.\\
-Long-term forecasting validation has been done with three LSTM configurations: Vanilla LSTM, Stacked LSTM and Bi-directional LSTM. Relu activation function was used, optimizer was Adam and loss function was Mean Squared Error. The best results were achieved with training the model in 400 epochs. Before fitting, all data was standardized (rescaled in interval -1,1) and transformed to data for supervised problem.
+Long-term forecasting validation has been done with three LSTM configurations: Vanilla LSTM, Stacked LSTM and Bi-directional LSTM. 
 
 \subsubsection{Recurrent Neural Networks}
 Humans don’t start their thinking from scratch every second. As you read this essay, you understand each word based on your understanding of previous words. You don’t throw everything away and start thinking from scratch again. Your thoughts have persistence.
@@ -995,6 +994,7 @@ I imported the required dependencies as shown in the figure below.
 
 
 \subsubsection{Vanilla LSTM}
+Relu activation function was used, optimizer was Adam and loss function was Mean Squared Error. The best results were achieved with training the model in 400 epochs. Before fitting, all data was standardized (rescaled in interval -1,1) and transformed to data for supervised problem.
 
 In order to get reproducible results in forecasting with LSTM, following values are fixed: seed value, 'PYTHONHASHSEED' environment variable, Python's, numpy's and Tensorflow's built-in pseudo-random generators. A new global Tensorflow session is configured.Below are the results from the vanilla LSTM model.
 This model is unidirectional in the sense that the current output is only influenced by the past states and the current input.
@@ -1180,6 +1180,18 @@ This model is unidirectional in the sense that the current output is only influe
   \end {center}
 \end{figure}
 
+\subsubsection{Learning Insights}
+Using 45 samples as the validation data and 690 samples as our training data per drug for the vanilla LSTM model of 100 units,  the graph in Figure 3.39 shows the learning curve with orange lines showing the validation loss and the blue lines showing the training loss metrics. 
+With this analysis, we see that the model starts detoriating at around 200 epochs. 
+\begin{figure}[H]%[!ht]
+  \begin {center}
+  \includegraphics[width=0.75\textwidth]{images/learningC.png}
+  \caption{Learning Curve of the Vanilla LSTM model.}
+  \label{fig:ecg}
+  \end {center}
+\end{figure}
+
+
 
 \section{Web API}
 I then built a web API that can be used by pharmacy managers using the streamlit python framework. One is able to select one of the various machine learning models in a drop down selection menu as shown below.
@@ -1331,7 +1343,26 @@ Incorparating a multivariate model that makes use of various input data to forec
     \bibitem{19}
     Accessed on December 18th 2020, \emph{https://docs.streamlit.io/en/stable/}  \hskip 1em plus 0.5em minus 0.4em \relax 
 
-    
+    \bibitem{20}
+     
+    Sepp ~Hochreiter ~Jürgen ~Schmidhube"Long short-term memory” \emph{ Neural Computation}  \hskip 1em plus 0.5em minus 0.4em \relax 
+
+    \bibitem{21}
+     
+    Graves, ~A. ~Liwicki, ~M.; ~Fernandez, ~S.; ~Bertolami, ~R.; ~Bunke, H."A Novel Connectionist System for Improved Unconstrained Handwriting Recognition” \emph{ IEEE Transactions on Pattern Analysis and Machine Intelligence}  \hskip 1em plus 0.5em minus 0.4em \relax 
+
+    \bibitem{22}
+     
+    Sak, ~Hasim; ~Senior, ~Andrew; ~Beaufays, ~Francoise (2014)."Long Short-Term Memory recurrent neural network architectures for large scale acoustic modeling”  \hskip 1em plus 0.5em minus 0.4em \relax 
+
+    \bibitem{23}
+     
+    Li, Xiangang; Wu, Xihong;"Constructing Long Short-Term Memory based Deep Recurrent Neural Networks for Large Vocabulary Speech Recognition” \hskip 1em plus 0.5em minus 0.4em \relax 
+
+    \bibitem{24}
+     
+    Sepp Hochreiter; Jürgen Schmidhuber ;"Long Short Term Memory” \emph{ Wikidata }  \hskip 1em plus 0.5em minus 0.4em \relax 
+
 
 \end{thebibliography}		
 
