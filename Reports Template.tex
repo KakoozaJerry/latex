@@ -389,7 +389,8 @@ The following major contributions have been accomplished during the course of th
 
 \end{enumerate}
 
-
+\section{Scope of the project}
+This project was conducted from September 2019 to December 2020 using data mining and machine learning techniques. Sales and purchases data from 20th August 2017 to date will be collected from Soteria pharmacy, analysed and cleaned. Various machine learning models will be validated and trained using the obtained data sets and a best case model used to develop a web application that can be used by pharmacy owners to forecast sales.
 
 
 
@@ -427,7 +428,7 @@ This report has 3 chapters.
 \section{Introduction}
 
 % Start with an introduction
-
+Before beginning to predict, the algorithm needs to be trained. Often, the training is conducted on historical data, supervised learning, where there is a target function sale, revenue, profit or market share. Through the learning process, the model analyzes all the variables that affect sales (prices, traffic, etc.) and outputs a function describing sales. After the algorithm has completed the training and showed sufficient accuracy of the forecast, it can be used to recommend which values should be taken in the future to maximize sales.\cite{28}
 
 
 Health forecasting is a novel area of forecasting,and a valuable tool for predicting future health
@@ -508,6 +509,14 @@ Perhaps the most useful of these is the decomposition of a time series into 4 co
 All time series have a level, most have noise, and the trend and seasonality are optional.
 
 \end{enumerate}
+
+Traditional methods don’t consider metadata, don’t consider external factors like holidays, promotions and can’t handle a time series with no history.
+Using deep learning increases forecasting accuracy. Deep learning based Multi-Horizon Quantile Recurrent Neural Networks performs best on amazon retail demand data compared to other methods since it can predict promotional spikes.
+Extreme events such as inclement weather, and disease outbreaks only heighten the importance of forecasting for operations planning. Calculating demand time series forecasting during extreme events is a critical component of placing the next shipment purchase order of drugs. Although extreme event forecasting is a crucial piece of pharmacy operations, data sparsity makes accurate prediction challenging. Consider a disease outbreaks, one of the busiest times for pharmacies. We only have a handful of disease outbreaks to work with, and each instance might have a different cohort of users. In addition to historical data, extreme event prediction also depends on numerous external factors, including weather, population growth, and marketing changes such as an increase in sales agents for a particular drug.
+A combination of classical time series models, such as those found in the standard R forecast package, and machine learning methods are often used to forecast special events. These approaches, however, are neither flexible nor scalable enough for pharmacies.
+In this project, we introduce a pharmacy forecasting model that combines historical data and external factors to more precisely predict future sales, extreme events, highlighting its new architecture and how it compares to classical model results such as ARIMA.
+The Long Short Term Memory neural network (LSTM) ML method will be used as a use case. LSTM network is similar to the Multi-Horizon Quantile Recurrent Neural Networks and was proposed to avoid the long-term dependency problem present for the case of the latter. The advantage of LSTM units have over regular RNN units is their ability to keep information over longer periods of time due to their complex architecture which consists of several gates with the power to remove or add information to the unit’s state.
+Similar to RNN, the model used to implement the LSTM network is the sequential one comprised of a hidden and an output layer. Similarly, due to high computational time, the architecture of the model consists of three input nodes, six LSTM units forming the hidden layer and a single linear node in the output layer [10]. LSTM has been used in an article on application of Long Short-Term Memory (LSTM) Neural Network for Flood Forecasting by Xuan-Hien Le.
 
 
 \subsection{ARIMA}
@@ -1362,6 +1371,35 @@ Incorparating a multivariate model that makes use of various input data to forec
     \bibitem{24}
      
     Sepp Hochreiter; Jürgen Schmidhuber ;"Long Short Term Memory” \emph{ Wikidata }  \hskip 1em plus 0.5em minus 0.4em \relax 
+
+    \bibitem{25}
+     
+    F. ~NASSAKA,"The Independent 6 March 2018 [Online]. [Accessed 3 September 2019].” \emph{“https://www.independent.co.ug/expired-drugs-blame/}  \hskip 1em plus 0.5em minus 0.4em \relax 
+
+    \bibitem{26}
+     
+    Prof. ~Anthony. ~K. ~Mbonye,~Director General Health Services ,Ministry of health,"Essential Medicines and Health Supplies List EMHSLU 2016 FINAL.” \emph{2016}  \hskip 1em plus 0.5em minus 0.4em \relax 
+
+    \bibitem{27}
+     
+    Jagadeesan, ~D. ~Sathya and ~V. ~S. ~D,"Application of Machine Learning Techniques in Healthcare,” \emph{2020}  \hskip 1em plus 0.5em minus 0.4em \relax 
+
+    \bibitem{28}
+     
+    Spyros ~Makridakis, ~Evangelos ~Spiliotis and ~Vassilios ~Assimakopoulos.,"Statistical and Machine Learning forecasting methods:” \emph{Concerns and ways forward 
+    [Online]. 13(3), pp. 4-14. Available: https://doi.org/10.1371/journal.pone.0194889}  \hskip 1em plus 0.5em minus 0.4em \relax 
+
+    \bibitem{29}
+     
+    Forrester,"Interviewee,” \emph{[Interview].}  \hskip 1em plus 0.5em minus 0.4em \relax 
+
+    \bibitem{30}
+     
+    Hornik, K., M. Stinchcombe and H. White,"Multilayer Feedforward Networks are Universal Approximators” \emph{Neuml Networks, Vol. 2, 359-366,1989.}  \hskip 1em plus 0.5em minus 0.4em \relax 
+
+    \bibitem{31}
+     
+    Li Zhang, and ~Shi-feng ~Yan,"Comparison of Holt-Winters’ and ARIMA Methods for Forecasting Charge of China Airline Passengers” \emph{Journal of Shanghai University of Engineering Science Vol 3, 2006.}  \hskip 1em plus 0.5em minus 0.4em \relax 
 
 
 \end{thebibliography}		
